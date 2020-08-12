@@ -115,8 +115,8 @@
                         </td>
                         <td>
                             <h:inputText id="size" value="#{property.size}" title="size" required="true" requiredMessage="Please enter the size!" validatorMessage="Size must be larger than 1" converterMessage="Please enter a positive number" pt:placeholder="530000.59">
-	                            <f:convertNumber integerOnly="true"/> 
-								<f:validateLongRange minimum="1"/> 
+	                            <f:convertNumber integerOnly="false"/> 
+								<f:validateDoubleRange minimum="1.0"/> 
 							</h:inputText>
                             <br/>
                             <h:message for="size" class="#{!size.valid ? 'label label-warning' : 'none'}" />
