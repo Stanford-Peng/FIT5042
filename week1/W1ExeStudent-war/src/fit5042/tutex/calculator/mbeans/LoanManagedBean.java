@@ -21,6 +21,7 @@ public class LoanManagedBean implements Serializable {
 		this.loan = new Loan();
 	}
 
+	
 	public MonthlyPaymentCalculator getCalculator() {
 		return calculator;
 	}
