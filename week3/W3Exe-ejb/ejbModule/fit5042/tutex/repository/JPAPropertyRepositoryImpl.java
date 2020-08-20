@@ -96,7 +96,7 @@ public class JPAPropertyRepositoryImpl implements PropertyRepository {
         //This method will find all the properties which belong to the particular contact person
 		//Please write your code here
 		for (Property p : propertyList) {
-			if(p.getContactPerson() == contactPerson) {
+			if(p.getContactPerson().equals(contactPerson)) {
 				propertySet.add(p);
 			}
 		}	
