@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="W3Exe-ear">
+        <wb-resource deploy-path="/" source-path="/EarContent" tag="defaultRootSource"/>
+        <dependent-module archiveName="W3Exe-ejb.jar" deploy-path="/" handle="module:/resource/W3Exe-ejb/W3Exe-ejb">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="W3Exe-war.war" deploy-path="/" handle="module:/resource/W3Exe-war/W3Exe-war">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="W3Exe-common.jar" deploy-path="/lib" handle="module:/resource/W3Exe-common/W3Exe-common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>
