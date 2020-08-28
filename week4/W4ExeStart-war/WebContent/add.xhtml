@@ -33,7 +33,7 @@
 								<f:convertNumber integerOnly="true"/>
 								<f:validateLongRange minimum="1" maximum="1000" /> 
 								</h:inputText>
-								<h:message for="streetNumber" class="#{!streetNumber.valid ? 'label label-warning' : 'none'}" />
+								<h:message for="streetNumber" class="#{!streetNumber.valid ? 'label label-warning' : 'none'}" /> 
 									</td>
 
 						</tr>
@@ -61,13 +61,17 @@
 						<tr>
 							<td><h:outputLabel value="state" for="state" /></td>
 							<td><h:inputText id="state" value="#{property.state}"
-									title="state" requiredMessage="Please enter the state!" pt:placeholder="VIC"/></td>
+									title="state" requiredMessage="Please enter the state!" pt:placeholder="VIC"/>
+									<h:message for="suburb" class="#{!suburb.valid ? 'label label-warning' : 'none'}" />
+									</td>
 
 						</tr>
 						<tr>
 							<td><h:outputLabel value="postcode" for="postcode" /></td>
 							<td><h:inputText id="postcode" value="#{property.postcode}"
-									title="postcode" requiredMessage="Please enter the postcode!" validatorMessage="Please enter a postcode between 0200 and 4700" converterMessage="Please enter a number" pt:placeholder="3145"/></td>
+									title="postcode" requiredMessage="Please enter the postcode!" validatorMessage="Please enter a postcode between 0200 and 4700" converterMessage="Please enter a number" pt:placeholder="3145"/>
+									<h:message for="suburb" class="#{!suburb.valid ? 'label label-warning' : 'none'}" />
+									</td>
 
 						</tr>
 						<tr>
@@ -76,7 +80,9 @@
 									title="Size" requiredMessage="Please enter the size!" validatorMessage="Size must be larger than 1" converterMessage="Please enter a positive number" pt:placeholder="530000.59" >
 									<f:convertNumber integerOnly="false"/> 
 								<f:validateDoubleRange minimum="1.0"/> 
-									</h:inputText></td>
+									</h:inputText>
+									<h:message for="suburb" class="#{!suburb.valid ? 'label label-warning' : 'none'}" />
+									</td>
 
 						</tr>
 
@@ -88,6 +94,7 @@
 									<f:convertNumber integerOnly="true"/>
                         		<f:validateLongRange minimum="0"/> 
 									</h:inputText>
+									<h:message for="suburb" class="#{!suburb.valid ? 'label label-warning' : 'none'}" />
 							</td>
 
 						</tr>
@@ -98,7 +105,9 @@
 									title="Price" requiredMessage="Please enter the price!" validatorMessage="The price must larger than $1" converterMessage="Please enter a price"  p:watermark="$100000.00">
 									<f:convertNumber currencySymbol="$" type="currency"/>
                             	<f:validateLongRange minimum="1"/>
-									</h:inputText></td>
+									</h:inputText>
+									<h:message for="suburb" class="#{!suburb.valid ? 'label label-warning' : 'none'}" />
+									</td>
 
 						</tr>
 						<tr>
@@ -113,7 +122,9 @@
 										 <f:param name = "phoneNo" value = "#{c.phoneNumber}" />  -->										  
 									 </f:selectItems>
 										 
-								</h:selectOneMenu></td>
+								</h:selectOneMenu>
+								<h:message for="suburb" class="#{!suburb.valid ? 'label label-warning' : 'none'}" />
+								</td>
 						</tr>
 
 					</table>
