@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Week 5 Webservice Tutorial</title>
+</h:head>
+<h:body>
+	<h1>Web Services Facelet Client</h1>
+	<f:view>
+		<h:form>
+			<p>
+				Your name:
+				<h:message for="name" />
+			</p>
+			<h:inputText id="name" label="Name" size="32"
+				value="#{webServiceBean.name}" required="true"
+				requiredMessage="You must enter a name!"></h:inputText>
+			<h:commandButton id="submit" value="Submit"
+				action="#{webServiceBean.setWebServiceClient}" />
+		</h:form>
+	</f:view>
+
+
+	<h:form>
+		<table>
+			<tr>
+				<td>Principle:</td>
+				<td><h:inputText id="principle"
+						value="#{webServiceBean.principle}">
+						<f:convertNumber pattern="#0.##" />
+					</h:inputText></td>
+			</tr>
+			<tr>
+				<td>Interest Rate:</td>
+				<td><h:inputText id="interestRate"
+						value="#{webServiceBean.interestRate}">
+						<f:convertNumber pattern="#0.#######" />
+					</h:inputText></td>
+			</tr>
+			<tr>
+				<td>Number of Years:</td>
+				<td><h:inputText id="numberOfYears"
+						value="#{webServiceBean.numberOfYears}" /></td>
+			</tr>
+			<tr>
+				<td>Monthly Payment:</td>
+				<td><h:outputLabel id="monthlyPayment"
+						value="#{webServiceBean.monthlyPayment}">
+						<f:convertNumber currencyCode="AUD" type="currency" />
+					</h:outputLabel></td>
+			</tr>
+
+		</table>
+		<h:commandButton type="submit" id="calculate" value="Set Loan"
+			action="#{webServiceBean.setLoanService()}" />
+	</h:form>
+
+	<p>
+		View The <a href="webresources/greeting">View Result</a>
+	</p>
+
+</h:body>
+</html>
