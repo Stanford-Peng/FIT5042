@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 
 import fit5042.tutex.repository.constants.CommonInstance;

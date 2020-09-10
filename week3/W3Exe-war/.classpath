@@ -3,7 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="/Users/stanford/Documents/MIT/FIT5042EAD/lab/week1/javaee-api-7.0.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/W3Exe-common"/>
 	<classpathentry kind="con" path="org.eclipse.glassfish.tools.lib.system">
 		<attributes>

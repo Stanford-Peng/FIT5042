@@ -159,10 +159,10 @@ public class PropertyManagedBean implements Serializable {
 
     public void editProperty(Property property) {
         try {
-            String s = property.getAddress().getStreetNumber();
-            Address address = property.getAddress();
-            address.setStreetNumber(s);
-            property.setAddress(address);
+            //String s = property.getAddress().getStreetNumber();
+            //Address address = property.getAddress();
+            //address.setStreetNumber(s);
+            //property.property.setAddress(address);
 
             propertyRepository.editProperty(property);
 

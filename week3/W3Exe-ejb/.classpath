@@ -2,7 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="ejbModule"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="/Users/stanford/Documents/MIT/FIT5042EAD/lab/week1/javaee-api-7.0.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/W3Exe-common"/>
 	<classpathentry kind="con" path="org.eclipse.glassfish.tools.lib.system">
 		<attributes>
@@ -12,6 +11,11 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.launching.macosx.MacOSXType/Java SE 8 [1.8.0_251]">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/FIT5042-w2">
+		<attributes>
+			<attribute name="owner.project.facets" value="#system#;jpt.jpa"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="build/classes"/>

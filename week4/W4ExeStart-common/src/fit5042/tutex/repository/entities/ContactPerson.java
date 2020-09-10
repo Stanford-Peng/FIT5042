@@ -23,7 +23,12 @@ import javax.persistence.Table;
     @NamedQuery(name = ContactPerson.GET_ALL_QUERY_NAME, query = "SELECT c FROM ContactPerson c")})
 public class ContactPerson implements Serializable {
 
-    public static final String GET_ALL_QUERY_NAME = "ContactPerson.getAll";
+    /**
+	 * 
+	 */
+	//private static final long serialVersionUID = 1L;
+
+	public static final String GET_ALL_QUERY_NAME = "ContactPerson.getAll";
 
     private int conactPersonId;
     private String name;
