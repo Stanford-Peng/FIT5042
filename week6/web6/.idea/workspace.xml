@@ -10,7 +10,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c798d5ba-b8c1-4301-aa33-ebd668c713d2" name="Default Changelist" comment="second time" />
+    <list default="true" id="c798d5ba-b8c1-4301-aa33-ebd668c713d2" name="Default Changelist" comment="second time">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,7 +26,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/pokemon" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="GithubPullRequestsUISettings">
     <option name="hiddenUrls">
@@ -45,8 +47,15 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="watcher.settings" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/pokemon/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/pokemon/src/app/pokeapi" />
+      <recent name="$PROJECT_DIR$/pokemon/src/app" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -59,6 +68,8 @@
       <workItem from="1599713139051" duration="4269000" />
       <workItem from="1599718581704" duration="1840000" />
       <workItem from="1599720749814" duration="533000" />
+      <workItem from="1599721334955" duration="360000" />
+      <workItem from="1599790109905" duration="1343000" />
     </task>
     <task id="LOCAL-00001" summary="firstTime">
       <created>1599718653123</created>
@@ -106,16 +117,24 @@
       <screen x="-533" y="-1417" width="2560" height="1417" />
     </state>
     <state x="156" y="-1074" key="#com.intellij.execution.impl.EditConfigurationsDialog/38.23.1402.877/-533.-1417.2560.1417@-533.-1417.2560.1417" timestamp="1599719671753" />
+    <state x="357" y="-951" key="EditFileWatcherDialog" timestamp="1599790394743">
+      <screen x="-533" y="-1417" width="2560" height="1417" />
+    </state>
+    <state x="357" y="-951" key="EditFileWatcherDialog/40.23.1400.877/-533.-1417.2560.1417@-533.-1417.2560.1417" timestamp="1599790394743" />
     <state x="567" y="-810" key="Github.CreateGistDialog" timestamp="1599719582346">
       <screen x="-533" y="-1417" width="2560" height="1417" />
     </state>
     <state x="567" y="-810" key="Github.CreateGistDialog/38.23.1402.877/-533.-1417.2560.1417@-533.-1417.2560.1417" timestamp="1599719582346" />
     <state x="567" y="-810" key="Github.CreateGistDialog/39.23.1401.877/-533.-1417.2560.1417@-533.-1417.2560.1417" timestamp="1599718500120" />
-    <state x="195" y="-978" width="1286" height="520" key="Vcs.Push.Dialog.v2" timestamp="1599720875279">
+    <state x="200" y="-1097" key="SettingsEditor" timestamp="1599790387157">
       <screen x="-533" y="-1417" width="2560" height="1417" />
     </state>
-    <state x="195" y="-978" key="Vcs.Push.Dialog.v2/38.23.1402.877/-533.-1417.2560.1417@-533.-1417.2560.1417" timestamp="1599720875279" />
-    <state x="327" y="-996" width="1286" height="520" key="Vcs.Push.Dialog.v2/39.23.1401.877/-533.-1417.2560.1417@-533.-1417.2560.1417" timestamp="1599718789898" />
+    <state x="200" y="-1097" key="SettingsEditor/40.23.1400.877/-533.-1417.2560.1417@-533.-1417.2560.1417" timestamp="1599790387157" />
+    <state x="195" y="-978" width="1286" height="520" key="Vcs.Push.Dialog.v2" timestamp="1599721529223">
+      <screen x="-533" y="-1417" width="2560" height="1417" />
+    </state>
+    <state x="195" y="-978" key="Vcs.Push.Dialog.v2/38.23.1402.877/-533.-1417.2560.1417@-533.-1417.2560.1417" timestamp="1599721529223" />
+    <state x="327" y="-996" width="1286" height="520" key="Vcs.Push.Dialog.v2/39.23.1401.877/-533.-1417.2560.1417@-533.-1417.2560.1417" timestamp="1599721386025" />
     <state x="540" y="-815" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599719664414">
       <screen x="-533" y="-1417" width="2560" height="1417" />
     </state>
