@@ -69,7 +69,11 @@
       <workItem from="1599718581704" duration="1840000" />
       <workItem from="1599720749814" duration="533000" />
       <workItem from="1599721334955" duration="360000" />
-      <workItem from="1599790109905" duration="1343000" />
+      <workItem from="1599790109905" duration="6966000" />
+      <workItem from="1599798096848" duration="96000" />
+      <workItem from="1599798236429" duration="72000" />
+      <workItem from="1599818062052" duration="1002000" />
+      <workItem from="1600065693538" duration="1892000" />
     </task>
     <task id="LOCAL-00001" summary="firstTime">
       <created>1599718653123</created>
@@ -113,9 +117,10 @@
       <screen x="-533" y="-1417" width="2560" height="1417" />
     </state>
     <state x="423" y="-905" key="#Notifications/38.23.1402.877/-533.-1417.2560.1417@-533.-1417.2560.1417" timestamp="1599719590409" />
-    <state x="156" y="-1074" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599719671753">
+    <state x="156" y="-1074" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599793944669">
       <screen x="-533" y="-1417" width="2560" height="1417" />
     </state>
+    <state x="156" y="-1074" key="#com.intellij.execution.impl.EditConfigurationsDialog/37.23.1403.877/-533.-1417.2560.1417@-533.-1417.2560.1417" timestamp="1599793944669" />
     <state x="156" y="-1074" key="#com.intellij.execution.impl.EditConfigurationsDialog/38.23.1402.877/-533.-1417.2560.1417@-533.-1417.2560.1417" timestamp="1599719671753" />
     <state x="357" y="-951" key="EditFileWatcherDialog" timestamp="1599790394743">
       <screen x="-533" y="-1417" width="2560" height="1417" />
@@ -153,14 +158,19 @@
       <screen x="-533" y="-1417" width="2560" height="1417" />
     </state>
     <state x="356" y="-388" key="run.anything.popup/38.23.1402.877/-533.-1417.2560.1417@-533.-1417.2560.1417" timestamp="1599719668090" />
+    <state x="198" y="-1057" width="670" height="676" key="search.everywhere.popup" timestamp="1600067372362">
+      <screen x="-533" y="-1417" width="2560" height="1417" />
+    </state>
+    <state x="198" y="-1057" width="670" height="676" key="search.everywhere.popup/38.23.1402.877/-533.-1417.2560.1417@-533.-1417.2560.1417" timestamp="1599797450400" />
+    <state x="198" y="-1057" width="670" height="676" key="search.everywhere.popup/41.23.1399.877/-533.-1417.2560.1417@-533.-1417.2560.1417" timestamp="1600067372362" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/pokemon/src/app/app.component.ts</url>
-          <line>5</line>
-          <option name="timeStamp" value="1" />
+          <line>15</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

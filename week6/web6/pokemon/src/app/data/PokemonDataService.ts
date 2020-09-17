@@ -1,5 +1,6 @@
 import {Pokemon} from '../model/pokemon';
 import {InMemoryDbService} from 'angular-in-memory-web-api';
+
 export class PokemonDataService implements InMemoryDbService {
   createDb() {
   const pokemons: Pokemon[] = [

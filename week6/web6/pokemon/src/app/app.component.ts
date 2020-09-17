@@ -12,7 +12,7 @@ export class AppComponent {
   }
 
   onClick() {
-    console.log('varnav')
+    //console.log('varnav')
     this.router.navigate(['/']);
   }
 }
