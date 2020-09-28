@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:o="http://omnifaces.org/ui"
+	  xmlns:of="http://omnifaces.org/functions"
+      > 
+
+<h:head>
+	<title>Add User</title>
+	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+</h:head> 
+<body> 
+
+<div class="container">
+		<div class="navbar navbar-inverse">
+			<div class="navbar-brand">CMS - Add
+				User</div>
+		</div>
+		<div>
+			<f:view>
+				<h:form>
+					<h1>
+						<h:outputText value="Create" />
+					</h1>
+					<table class="table table-bordered ">
+
+						<tr>
+							<td width="200"><h:outputLabel value="Account"
+									for="account" /></td>
+									
+							<td><h:inputText id="account"
+									value="#{user.account}" title="userAccount" required="true" requiredMessage="Please enter the user account" validatorMessage="The account length has to be greater than 4"  pt:placeholder="stan">
+									<f:validateLength minimum = "4"/>
+								</h:inputText>
+								<h:message for="account" class="#{!account.valid ? 'label label-warning' : 'none'}" /> 
+							</td>
+
+						</tr>
+
+						<tr>
+							<td><h:outputLabel value="Password" for="password"  />
+							</td>
+							<td>
+							<h:inputSecret id="password"
+									value="#{user.password}" title="password" required="true" requiredMessage="Please enter the password" validatorMessage="The account length has to be greater than 4">
+									<f:validateLength minimum = "4"/>
+							</h:inputSecret>
+									
+									<h:message for="password" class="#{!password.valid ? 'label label-warning' : 'none'}" /> 
+							</td>
+								
+						</tr>
+						
+						<tr>
+							<td><h:outputLabel value="Password" for="passwordCheck"  />
+							</td>
+							<td>
+							<h:inputSecret id="passwordCheck"
+									 title="passwordCheck" required="true" requiredMessage="Please enter the same password twice to confirm" validatorMessage="The account length has to be greater than 4">
+									<f:validateLength minimum = "4"/>
+							</h:inputSecret>
+									
+								<h:message for="passwordCheck" class="#{!passwordCheck.valid ? 'label label-warning' : 'none'}" />
+								<o:validateEqual components="password passwordCheck"
+									message="Passwords do not match!" showMessageFor="passwordCheck" />
+									<!-- reference:https://stackoverflow.com/questions/2909021/jsf-2-0-validate-equality-of-2-inputsecret-fields-confirm-password-without-wr -->
+							</td>
+								
+						</tr>
+
+						
+
+					</table>
+
+					<h:commandButton id="submit" value="Submit"
+						action="#{adminApplication.addUser(user)}"
+						class="btn btn-primary" />
+						
+					<h:link id="close" value="Close" outcome="allUsers.xhtml"
+						class="btn btn-primary" />
+
+				</h:form>
+
+			</f:view>
+		</div>
+	</div>
+
+</body> 
+</html>

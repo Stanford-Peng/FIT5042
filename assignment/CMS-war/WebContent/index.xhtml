@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Customer Management System Portal</title>
+</h:head>
+
+<body>
+	<h:form id="MyForm">
+<!-- 		<h2>#{loginController.pageTitle}</h2> -->
+
+		<div>
+			<h:commandButton action="#{loginController.navigate('User Authentication')}" value = "Access Normal User"
+				>
+			</h:commandButton>
+		</div>
+		
+		<div>
+			<h:commandButton action="#{loginController.navigate('Admin Authentication')}" value = "Access Administration"
+				>
+			</h:commandButton>
+		</div>
+
+	</h:form>
+</body>
+</html>
+
+
+
+<!-- 		<div>
+			<h:commandButton action="admin/index.xhtml?faces-redirect=true" value = "Access Administration"
+				>
+				
+				<f:setPropertyActionListener target = "#{loginController.pageTitle}"  
+      			value = "Admin Authentication" /> 
+			</h:commandButton>
+		</div>
+		<div>
+			<h:commandButton action="normal/index.xhtml?faces-redirect=true" value="Access Normal User"
+				>
+				
+				<f:setPropertyActionListener target = "#{loginController.pageTitle}"  
+      			value = "Normal User Authentication" /> 
+			</h:commandButton>
+		</div> -->

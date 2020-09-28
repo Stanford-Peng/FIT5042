@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+</h:head>
+<body>
+	<div class="container">
+		<div class="navbar navbar-inverse">
+			<div class="navbar-brand">Customer Management System</div>
+		</div>
+		<div class="nav nav-tabs">
+			<h:link role="presentation" class="active" value="Home | "
+				outcome="index.xhtml" />
+			<h:link role="presentation" value="Manage All Users | "
+				outcome="allUsers.xhtml" />
+			<h:link role="presentation" value="Manage All Customers"
+				outcome="allCustomers.xhtml" />
+		</div>
+		<h:form id="MyForm">
+			<p:dataTable class="table table-bordered table-striped" id="myList"
+				value="#{adminApplication.users}" var="normalUser"
+				varStatus="status">
+				<p:column headerText="Account">
+					<h:outputText value="#{normalUser.account}" id="userAccount" />
+				</p:column>
+
+				<p:column headerText="Operations">
+					<p:commandLink value="Delete"
+						action="#{adminApplication.deleteUser(normalUser.account)}"
+						disabled="#{normalUser.account == null}" update="myList">
+						<p:confirm header="Confirmation" message="Are you sure?"
+							icon="pi pi-exclamation-triangle" />
+					</p:commandLink>
+				</p:column>
+
+				<!-- 							<h:link value="View | " outcome="userDetail.xhtml">
+								pass the parameter to next page, the param name is propertyID, and the value is index + 1.
+                                You can get the value from next page using the indexController
+								<f:param name="userAccount" value="#{normalUser.account}" />
+								
+							</h:link> 
+							
+							<h:link value="Edit | " outcome="editUser.xhtml">
+								pass the parameter to next page, the param name is propertyID, and the value is index + 1.
+                                You can get the value from next page using the indexController
+								<f:param name="userAccount" value="#{normalUser.account}" />
+							</h:link>  -->
+
+
+				<!-- reference:https://stackoverflow.com/questions/19362983/how-to-add-confirmation-dialog ; https://www.primefaces.org/showcase/ui/data/datatable/basic.xhtml-->
+
+
+			</p:dataTable>
+
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+				<p:commandButton value="Yes" type="button"
+					styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+				<p:commandButton value="No" type="button"
+					styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+			</p:confirmDialog>
+			<h:outputText value=" " />
+
+			<div>
+				<h:commandButton id="add" value="Add" action="addUser.xhtml"
+					class="btn btn-primary" />
+
+				<h:commandButton id="viewAll" value="View All"
+					action="#{adminApplication.updateUserList()}"
+					class="btn btn-primary">
+				</h:commandButton>
+			</div>
+
+			<div>
+				<h:inputText value="#{adminApplication.searchedAccount}"
+					id="searchByAccount"
+					onchange="if (document.getElementById('MyForm:searchByAccount').value.trim() == '') {document.getElementById('MyForm:searchByAccount').value = '';} " />
+				<h:commandButton id="search" value="Search by Account"
+					action="#{adminApplication.searchUserByAccount(adminApplication.searchedAccount)}"
+					class="btn btn-primary">
+				</h:commandButton>
+			</div>
+		</h:form>
+	</div>
+
+</body>
+</html>
