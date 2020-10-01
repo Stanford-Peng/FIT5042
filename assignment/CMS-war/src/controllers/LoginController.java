@@ -52,6 +52,11 @@ public class LoginController implements Serializable{
 		
 	}
 	
+    public String logout() {
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        return "/index.xhtml?faces-redirect=true";
+    }
+	
 //	public void go(String sth) throws IOException {
 //		
 //		String page = "error.xhtml";

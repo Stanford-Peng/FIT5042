@@ -2,10 +2,85 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+      xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:o="http://omnifaces.org/ui"
+	  xmlns:of="http://omnifaces.org/functions"> 
 
-<h:head></h:head> 
+
+<h:head>
+<title> Edit User</title>
+<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+</h:head> 
 <body> 
+<div class="container">
+			<div class="navbar-brand">CMS - Change
+				User Password</div>
+		<div>
+			<f:view>
+				<h:form>
+					<table class="table table-bordered ">
+						<tr>
+							<td width="200"><h:outputLabel value="Account"
+									for="account" /></td>
+									
+							<td>
+							<h:outputLabel id="account">
+									#{editUserController.editUser.account}
+							</h:outputLabel>
+							</td>
 
+						</tr>
+
+						<tr>
+							<td>
+							<h:outputLabel value="Password" for="password"  />
+							</td>
+							<td>
+							<h:inputSecret id="password"
+									value="#{editUserController.editUser.password}" title="password" required="true" requiredMessage="Please enter the password" validatorMessage="The account length has to be greater than 4">
+									<f:validateLength minimum = "4"/>
+							</h:inputSecret>									
+									<h:message for="password" class="#{!password.valid ? 'label label-warning' : 'none'}" /> 
+							</td>
+								
+						</tr>
+						
+						<tr>
+							<td><h:outputLabel value="Confirm Password" for="passwordCheck"  />
+							</td>
+							<td>
+							<h:inputSecret id="passwordCheck"
+							value="#{editUserController.editUser.password}" 
+									 title="passwordCheck" required="true" requiredMessage="Please enter the same password twice to confirm" validatorMessage="The account length has to be greater than 4">
+									<f:validateLength minimum = "4"/>
+							</h:inputSecret>
+									
+								<h:message for="passwordCheck" class="#{!passwordCheck.valid ? 'label label-warning' : 'none'}" />
+								<o:validateEqual components="password passwordCheck"
+									message="Passwords do not match!" showMessageFor="passwordCheck" />
+									<!-- reference:https://stackoverflow.com/questions/2909021/jsf-2-0-validate-equality-of-2-inputsecret-fields-confirm-password-without-wr -->
+							</td>
+								
+						</tr>
+
+						
+
+					</table>
+
+					<h:commandButton id="submit" value="Change Password"
+						action="#{adminApplication.updateUser(editUserController.editUser)}"
+						class="btn btn-primary" >
+						<f:param name="userAccount"
+					value="#{editUserController.editUser.account}" />
+					</h:commandButton>
+						
+					<h:link id="close" value="Close" outcome="allUsers.xhtml"
+						class="btn btn-primary" />
+
+				</h:form>
+
+			</f:view>
+		</div>
+	</div>
 </body> 
 </html>

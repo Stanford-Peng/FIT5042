@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Set;
 
 import javax.ejb.Stateless;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -19,6 +21,7 @@ public class JPAContact implements ContactRepository {
 	public void addContact(Contact contact) throws Exception {
 		// TODO Auto-generated method stub
 		entityManager.persist(contact);
+		//entityManager.flush();
 		
 	}
 
@@ -50,5 +53,15 @@ public class JPAContact implements ContactRepository {
 		}
 		
 	}
+
+	@Override
+	public List<Contact> getContactsByCustomerID(int customerID) throws Exception {
+		// TODO Auto-generated method stub
+		List<Contact> contacts = entityManager.createNamedQuery("Contact.findByCustomerID",Contact.class).setParameter("customerID", customerID).getResultList();
+		System.out.print(contacts.size());
+		return contacts;
+	}
+	
+	
 	
 }

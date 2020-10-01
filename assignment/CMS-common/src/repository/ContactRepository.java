@@ -1,5 +1,6 @@
 package repository;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.ejb.Remote;
@@ -17,5 +18,7 @@ public interface ContactRepository {
 	public void updateContact(Contact contact) throws Exception;
 	
 	public void deleteContact(String contactEmail) throws Exception;
+	
+	public List<Contact> getContactsByCustomerID(int customerID) throws Exception;
 
 }

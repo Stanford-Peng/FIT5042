@@ -1,7 +1,9 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Basic;
@@ -32,6 +34,7 @@ import javax.validation.constraints.Size;
 @Table(name="CUSTOMER")
 @NamedQueries({
 	@NamedQuery(name = "Customer.findAll", query = "SELECT c FROM Customer c order by c.customerID desc")
+	//,@NamedQuery(name = "Customer.findByUser", query = "SELECT c FROM Customer c WHERE c.normalUser.account = :account")
 })
 public class Customer implements Serializable {
 	
@@ -46,15 +49,15 @@ public class Customer implements Serializable {
 	private String customerNationality;
 	private Date customerAddedDate;
 	private Double customerDiscountRate;
-	private Character customerScale;
-	private Set<Contact> customerContacts;
+	private String customerScale;
+	private List<Contact> customerContacts;
 	private NormalUser normalUser;
 	
 	public Customer() {
 		super();
 	}
 	public Customer(int customerID, Industry customerIndustryType, String customerName, Address customerAddress,
-			String customerNationality, Date customerAddedDate, Double customerDiscountRate, Character customerScale) {
+			String customerNationality, Date customerAddedDate, Double customerDiscountRate, String customerScale) {
 		super();
 		this.customerID = customerID;
 		this.customerIndustryType = customerIndustryType;
@@ -64,6 +67,7 @@ public class Customer implements Serializable {
 		this.customerAddedDate = customerAddedDate;
 		this.customerDiscountRate = customerDiscountRate;
 		this.customerScale = customerScale;
+		
 	}
 	
 	@Id
@@ -132,19 +136,20 @@ public class Customer implements Serializable {
 	}
 	
 	@Column(name="scale")
-	@Pattern(regexp = "[S,M,L]")
-	public Character getCustomerScale() {
+	@Size(min = 1, max = 1)
+	@Pattern(regexp = "[SML]")
+	public String getCustomerScale() {
 		return customerScale;
 	}
-	public void setCustomerScale(Character customerScale) {
+	public void setCustomerScale(String customerScale) {
 		this.customerScale = customerScale;
 	}
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="customer")
-	public Set<Contact> getCustomerContact() {
+	public List<Contact> getCustomerContact() {
 		return customerContacts;
 	}
-	public void setCustomerContact(Set<Contact> customerContacts) {
+	public void setCustomerContact(List<Contact> customerContacts) {
 		this.customerContacts = customerContacts;
 	}
 	
@@ -158,6 +163,9 @@ public class Customer implements Serializable {
 		this.normalUser = normalUser;
 	}
 	
-	
+	@Override
+    public String toString() {
+        return this.customerID + " - " + this.customerName;
+    }
 
 }

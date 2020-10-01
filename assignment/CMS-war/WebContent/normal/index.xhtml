@@ -6,7 +6,25 @@
 
 <h:head></h:head>
 <body>
-	<h1>Normal User Area</h1>
-	<p>Welcome to the secured Normal user area.</p>
+			<div class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="navbar-brand">Customer Management System</div>
+
+			<div class="collapse navbar-collapse">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active"><h:link class="nav-link"
+							value="Home | " outcome="index.xhtml" /></li>
+<!-- 					<li class="nav-item"><h:link class="nav-link"
+							value="Manage All Users | " outcome="allUsers.xhtml" /></li>
+					<li class="nav-item"><h:link class="nav-link"
+							value="Manage All Customers" outcome="allCustomers.xhtml" /></li> -->
+					<h:form>
+						<li class="nav-item"><h:commandLink class="nav-link"
+								value="Log out" action="#{loginController.logout()}" /></li>
+					</h:form>
+				</ul>
+			</div>
+		</div>
+
+		<p>Welcome to the secured user area.</p>
 </body>
 </html>

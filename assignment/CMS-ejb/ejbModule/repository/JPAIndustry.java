@@ -23,10 +23,10 @@ public class JPAIndustry implements IndustryRepository {
 	}
 
 	@Override
-	public Set<Industry> getAllIndustries() throws Exception {
+	public List<Industry> getAllIndustries() throws Exception {
 		// TODO Auto-generated method stub
 		List<Industry> industries = entityManager.createNamedQuery("Industry.findAll", Industry.class).getResultList();
-		return JPACustomer.convertListToSet(industries);
+		return industries;
 	}
 
 	@Override
@@ -48,6 +48,14 @@ public class JPAIndustry implements IndustryRepository {
 			entityManager.remove(industry);
 		}
 		
+	}
+
+	@Override
+	public Industry findIndustryByID(int industryID) throws Exception {
+		// TODO Auto-generated method stub
+		
+		Industry industry = entityManager.find(Industry.class, industryID);
+		return industry;
 	}
 	
 	

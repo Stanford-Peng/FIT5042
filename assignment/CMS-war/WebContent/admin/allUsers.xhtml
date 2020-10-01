@@ -6,36 +6,53 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
+<title> All Users</title>
 	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
 </h:head>
 <body>
-	<div class="container">
-		<div class="navbar navbar-inverse">
+<!-- 	<div class="container"> -->
+		<div class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="navbar-brand">Customer Management System</div>
+
+			<div class="collapse navbar-collapse">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active"><h:link class="nav-link"
+							value="Home | " outcome="index.xhtml" /></li>
+					<li class="nav-item"><h:link class="nav-link"
+							value="Manage All Users | " outcome="allUsers.xhtml" /></li>
+					<li class="nav-item"><h:link class="nav-link"
+							value="Manage All Customers | " outcome="allCustomers.xhtml" /></li>
+											<li class="nav-item"><h:link class="nav-link"
+							value="Manage Industries" outcome="allIndustries.xhtml" /></li>
+					<h:form>
+					<li class="nav-item"><h:commandLink class="nav-link" value="Log out"
+							action="#{loginController.logout()}"/></li>
+					</h:form>
+				</ul>
+			</div>
 		</div>
-		<div class="nav nav-tabs">
-			<h:link role="presentation" class="active" value="Home | "
-				outcome="index.xhtml" />
-			<h:link role="presentation" value="Manage All Users | "
-				outcome="allUsers.xhtml" />
-			<h:link role="presentation" value="Manage All Customers"
-				outcome="allCustomers.xhtml" />
-		</div>
+
 		<h:form id="MyForm">
 			<p:dataTable class="table table-bordered table-striped" id="myList"
 				value="#{adminApplication.users}" var="normalUser"
-				varStatus="status">
+				>
 				<p:column headerText="Account">
 					<h:outputText value="#{normalUser.account}" id="userAccount" />
 				</p:column>
 
 				<p:column headerText="Operations">
-					<p:commandLink value="Delete"
+					<p:commandLink value="Delete |"
 						action="#{adminApplication.deleteUser(normalUser.account)}"
 						disabled="#{normalUser.account == null}" update="myList">
+						
 						<p:confirm header="Confirmation" message="Are you sure?"
 							icon="pi pi-exclamation-triangle" />
 					</p:commandLink>
+
+					<h:link value="Change Password" outcome="editUser.xhtml">
+						<f:param name="userAccount" value="#{normalUser.account}" />
+					</h:link>
+
 				</p:column>
 
 				<!-- 							<h:link value="View | " outcome="userDetail.xhtml">
@@ -85,7 +102,7 @@
 				</h:commandButton>
 			</div>
 		</h:form>
-	</div>
+<!-- 	</div> -->
 
 </body>
 </html>

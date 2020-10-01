@@ -24,10 +24,10 @@ public class JPAUser implements UserRepository{
 	}
 
 	@Override
-	public Set<NormalUser> getAllUsers() throws Exception {
+	public List<NormalUser> getAllUsers() throws Exception {
 		// TODO Auto-generated method stub
 		List<NormalUser> users = entityManager.createNamedQuery("NormalUser.findAll", NormalUser.class).getResultList();
-		return JPACustomer.convertListToSet(users);
+		return users;
 	}
 
 	@Override

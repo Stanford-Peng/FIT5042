@@ -1,5 +1,6 @@
 package repository;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -7,8 +8,13 @@ import java.util.Set;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import entity.Customer;
+import entity.User;
 
 @Stateless
 public class JPACustomer implements CustomerRepository {
@@ -66,6 +72,48 @@ public class JPACustomer implements CustomerRepository {
   
         // return the set 
         return set; 
-    } 
+    }
+
+	@Override
+	public Customer searchCustomer(int customerID) throws Exception {
+		// TODO Auto-generated method stub
+		Customer c = entityManager.find(Customer.class, customerID);
+		
+		
+		return c;
+	}
+
+	@Override
+	public List<Customer> getCustomersByRole(String role) throws Exception {
+		// TODO Auto-generated method stub
+		boolean isAdmin;
+		List<Customer> customers;
+		//entityManager.flush();
+		
+		List<User> users = entityManager.createNamedQuery("User.findByAccount", User.class).setParameter("account", role).getResultList();
+		if (users.get(0).getUserType().equals("Admin")) {
+			isAdmin = true;
+		
+		} else {
+			isAdmin = false;
+		}
+		
+		if (isAdmin) {
+			customers = entityManager.createNamedQuery("Customer.findAll", Customer.class).getResultList();
+			
+		} else {
+			//customers = entityManager.createNamedQuery("Customers.findByAccount", Customer.class).setParameter("account", role).getResultList();
+			CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+	    	CriteriaQuery<Customer> criteriaQuery = builder.createQuery(Customer.class);
+	    	Root<Customer> c = criteriaQuery.from(Customer.class);
+	    	criteriaQuery.select(c).where(builder.equal(c.get("normalUser").get("account"), role)); //(p.get("price"), budget));//danger4
+	    	Query query = entityManager.createQuery(criteriaQuery);    	
+	    	//List<Property> properties = query.getResultList();
+	        customers =  query.getResultList();
+			
+		}
+		
+		return customers;
+	} 
 
 }

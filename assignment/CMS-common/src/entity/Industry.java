@@ -77,5 +77,8 @@ public class Industry implements Serializable{
 	}
 	
 	
-	
+	@Override
+	public String toString() {		
+		return industryID + "-" + (industryName == null ? "" : industryName);
+	}
 }

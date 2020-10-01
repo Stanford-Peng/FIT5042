@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -20,6 +21,10 @@ import javax.persistence.Table;
 @DiscriminatorColumn(name="user_type", discriminatorType = DiscriminatorType.STRING)
 @DiscriminatorValue("Null")
 @Table(name="ALLUSER")
+@NamedQueries({
+	@NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
+	@NamedQuery(name = "User.findByAccount", query = "SELECT u FROM User u WHERE u.account = :account")
+})
 public class User implements Serializable{
 	
 	/**
@@ -28,7 +33,7 @@ public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String account;
 	private String password;
-	
+	private String userType;
 	
 	public User() {
 		super();
@@ -54,6 +59,14 @@ public class User implements Serializable{
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	@Column(name = "user_type", insertable = false, updatable = false, nullable = false)
+	public String getUserType() {
+		return userType;
+	}
+	public void setUserType(String userType) {
+		this.userType = userType;
 	}
 	
 	

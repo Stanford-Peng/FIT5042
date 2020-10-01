@@ -7,6 +7,8 @@ import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -32,7 +34,9 @@ public class Address implements Serializable {
 	}
 	
 	@Column(name = "street_number")
-	@Digits(fraction = 0, integer = 6)
+	//@Pattern(regexp="\\d{1,4}")
+	//@Min(1)
+	//@Max(1000)
 	public String getStreetNumber() {
 		return streetNumber;
 	}
@@ -59,7 +63,8 @@ public class Address implements Serializable {
 	}
 	
 	@Column(name = "postcode")
-	@Size(min=4, max=4)
+//	@Digits(integer=4, fraction=0, message="Postcode Error")
+	@Pattern(regexp="\\d{4}")
 	public String getPostcode() {
 		return postcode;
 	}
@@ -68,11 +73,17 @@ public class Address implements Serializable {
 	}
 	
 	@Column(name = "state")
+	@Pattern(regexp = "NSW|QLD|SA|TAS|VIC|WA|ACT")
 	public String getState() {
 		return state;
 	}
 	public void setState(String state) {
 		this.state = state;
+	}
+	
+	@Override
+	public String toString() {
+		return streetNumber + " " + streetAddress + ", " + suburb + ", " + state + " " + postcode;
 	}
     
 	

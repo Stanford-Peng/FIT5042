@@ -8,6 +8,7 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.annotation.PostConstruct;
 import javax.el.ELContext;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.SessionScoped;
@@ -37,11 +38,17 @@ public class AdminApplication implements Serializable {
 	
 	private String searchedAccount = "";
 	
+	
 	public AdminApplication() {
 		Logger.getLogger(AdminApplication.class.getName()).log(Level.SEVERE, "AdminApplication Created");
 		
-		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
-		userBean = (UserBean) FacesContext.getCurrentInstance().getApplication().getELResolver().getValue(elContext, null, "userBean");
+//		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
+//		userBean = (UserBean) FacesContext.getCurrentInstance().getApplication().getELResolver().getValue(elContext, null, "userBean");
+		
+	}
+	
+	@PostConstruct
+	public void init() {
 		updateUserList();
 	}
 	
@@ -60,6 +67,12 @@ public class AdminApplication implements Serializable {
 			users.add(searched);
 		}
 		
+	}
+	
+	public NormalUser getUserByAccount(String account) {
+		//double check 
+		NormalUser searched = userBean.searchUserByAccount(account);
+		return searched;
 	}
 
 	public List<NormalUser> getUsers() {
@@ -97,6 +110,9 @@ public class AdminApplication implements Serializable {
 			updateUserList();
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("A new user has been added succesfully"));
 		}
+		else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Failed"));
+		}	
 		return "addUser.xhtml";
 	}
 	
@@ -106,19 +122,33 @@ public class AdminApplication implements Serializable {
 		if (result == true)	{
 			updateUserList();
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("User " + account +" has been deleted succesfully"));
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Failed, it may not exit and please click view all to refresh page"));
 		}	
 				
 		return "allUsers.xhtml";
 	}
 	
-	public boolean updateUser(NormalUser user) {
+	public void updateUser(NormalUser user) {
+		try {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("User " + toHexString(getSHA(user.getPassword())) +" has been changed password succesfully "));
+		    user.setPassword(toHexString(getSHA(user.getPassword())));
+		} catch (NoSuchAlgorithmException e) {  
+            System.out.println("Exception thrown for incorrect algorithm: " + e);  
+        } 
 		
+		boolean result  = userBean.editUser(user);
 		
-		return userBean.editUser(user);
+		if (result == true)	{
+			updateUserList();
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("User " + user.getAccount() +" has been changed password succesfully "));
+		}else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Failed"));
+		}		
 		
 	}
 	
-	//reference:https://www.geeksforgeeks.org/sha-256-hash-in-java/
+	//reference:https://www.geeksforgeeks.org/sha-256-hash-in-java/;https://www.baeldung.com/sha-256-hashing-java
 	public static byte[] getSHA(String input) throws NoSuchAlgorithmException 
     {  
         // Static getInstance method is called with hashing SHA  
@@ -132,17 +162,14 @@ public class AdminApplication implements Serializable {
     
     public static String toHexString(byte[] hash) 
     { 
-        // Convert byte array into signum representation  
-        BigInteger number = new BigInteger(1, hash);  
-  
-        // Convert message digest into hex value  
-        StringBuilder hexString = new StringBuilder(number.toString(16));  
-  
-        // Pad with leading zeros 
-        while (hexString.length() < 32)  
-        {  
-            hexString.insert(0, '0');  
-        }  
+    	StringBuffer hexString = new StringBuffer();
+    	for (int i = 0; i < hash.length; i++) {
+            String hex = Integer.toHexString(0xff & hash[i]);
+            if(hex.length() == 1) {
+                hexString.append('0');
+            }
+            hexString.append(hex);
+        } 
   
         return hexString.toString();  
     } 

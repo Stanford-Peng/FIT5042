@@ -5,9 +5,11 @@ import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -20,11 +22,16 @@ import javax.persistence.OneToMany;
 })
 public class NormalUser extends User implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Set<Customer> customers;
 	
 	public NormalUser() {
 		super();
 	}
+	
 
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="user")
 	public Set<Customer> getCustomers() {

@@ -1,6 +1,7 @@
 package beans;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 import javax.ejb.EJB;
@@ -32,10 +33,10 @@ public class UserBean implements Serializable {
 	public UserBean() {
 	}
 	
-	public Set<NormalUser> getAllUsers(){
+	public List<NormalUser> getAllUsers(){
 		try {
 		
-		Set<NormalUser> users = userRepository.getAllUsers();
+		List<NormalUser> users = userRepository.getAllUsers();
 		//System.out.print("users:" + users.size());
 		Logger.getLogger(UserBean.class.getName()).log(Level.SEVERE, "users:" + users.size());
 		return users;

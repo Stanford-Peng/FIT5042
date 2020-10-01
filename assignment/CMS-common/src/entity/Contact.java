@@ -24,14 +24,19 @@ import javax.validation.constraints.Size;
 @Table(name="CONTACT")
 @NamedQueries({
 	@NamedQuery(name = "Contact.findAll", query = "SELECT c FROM Contact c")
+	,@NamedQuery(name = "Contact.findByCustomerID", query = "SELECT c FROM Contact c WHERE c.customer.customerID = :customerID")
 })
 public class Contact implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String contactEmail;
 	private String contactFirstName;
 	private String contactLastName;
 	private Date contactDOB;
-	private Character contactGender;
+	private String contactGender;
 	private String contactPhoneNo;
 	private Customer customer;
 	
@@ -41,7 +46,7 @@ public class Contact implements Serializable{
 
 
 	public Contact(String contactEmail, String contactFirstName, String contactLastName, Date contactDOB,
-			Character contactGender, String contactPhoneNo) {
+			String contactGender, String contactPhoneNo) {
 		super();
 		this.contactEmail = contactEmail;
 		this.contactFirstName = contactFirstName;
@@ -102,12 +107,14 @@ public class Contact implements Serializable{
 
 
 	@Column(name = "gender")
-	public Character getContactGender() {
+	@Pattern(regexp = "[FMO]")
+	@Size(min = 1, max = 1)
+	public String getContactGender() {
 		return contactGender;
 	}
 
 
-	public void setContactGender(Character contactGender) {
+	public void setContactGender(String contactGender) {
 		this.contactGender = contactGender;
 	}
 
@@ -134,6 +141,10 @@ public class Contact implements Serializable{
 		this.customer = customer;
 	}
 	
+	@Override
+    public String toString() {
+        return this.contactEmail + " - " + this.contactFirstName + " " + this.contactLastName + " - " + this.contactPhoneNo;
+    }
 	
 	
 	
