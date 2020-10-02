@@ -3,6 +3,7 @@ package entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -130,7 +131,7 @@ public class Contact implements Serializable{
 		this.contactPhoneNo = contactPhoneNo;
 	}
 
-	@ManyToOne
+	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinColumn(name="customer_id", referencedColumnName="customer_id")
 	public Customer getCustomer() {
 		return customer;

@@ -3,6 +3,8 @@ package controllers.industry;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.el.ELContext;
@@ -12,8 +14,11 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.event.RowEditEvent;
+
 import beans.CustomerBean;
 import beans.IndustryTypeBean;
+import controllers.customer.AddCustomerController;
 import entity.Industry;
 
 @Named(value="allIndustryController")
@@ -49,27 +54,38 @@ public class AllIndustryController {
 		this.industries = industries;
 	}
 	
-	public String deleteIndustry(int industryID) {
-		
+	public void deleteIndustry(int industryID) {
+
 		try {
-			
-			boolean result = industryTypeBean.removeIndustry(industryID);
+			int param  = Integer.valueOf(FacesContext.getCurrentInstance()
+	                .getExternalContext()
+	                .getRequestParameterMap()
+	                .get("industryID"));
+			boolean result = false;
+			if (param == industryID) {
+				 result = industryTypeBean.removeIndustry(industryID);
+				} else {
+					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Failed and please refresh the page before deleting"));
+					Logger.getLogger(AddCustomerController.class.getName()).log(Level.SEVERE, "Failed and please refresh the page before deleting");
+				}
+//			
 			if (result) {
-				init();
+				init();//update list
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Industry " + industryID +" has been deleted succesfully"));
 			}
 		}catch(Exception ex){
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Delete Industry Failed"));
 		}
-		return "allIndustries.xhtml?faces-redirect=true";
+//		return "allIndustries.xhtml?faces-redirect=true";
 		
 	}
-	
-	public void updateIndustry(int industryID, String industryName) {
-		Industry industry = industryTypeBean.findIndustryByID(industryID);
-		industry.setIndustryName(industryName);
+	//,int industryID, String industryName
+	public void updateIndustry(RowEditEvent<Industry> event) {
+		Industry industry = industryTypeBean.findIndustryByID(event.getObject().getIndustryID());
+		industry.setIndustryName(event.getObject().getIndustryName());
 		industryTypeBean.editIndustry(industry);
-		
+        FacesMessage msg = new FacesMessage("Industry Editted", event.getObject().getIndustryName());	       
+        FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 	
 	public String addIndustry() {
@@ -78,5 +94,11 @@ public class AllIndustryController {
 		return "allIndustries.xhtml?faces-redirect=true";
 		
 	}
+	
+	 public void onRowCancel(RowEditEvent<Industry> event) {
+	        FacesMessage msg = new FacesMessage("Edit Cancelled", event.getObject().getIndustryName());
+	       
+	        FacesContext.getCurrentInstance().addMessage(null, msg);
+	    }
 
 }

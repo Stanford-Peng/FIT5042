@@ -32,41 +32,50 @@
 	</div>
 
 	<h:form id="MyForm">
+	<p:growl id="msgs" showDetail="true"/>
 		<p:dataTable class="table table-bordered table-striped"
-			editable="true" id="myIndustryList"
+			 id="myIndustryList" editable ="true"
 			value="#{allIndustryController.industries}" var="industry">
+			
+        <p:ajax event="rowEdit" listener="#{allIndustryController.updateIndustry}" update=":MyForm:msgs" />
+        <p:ajax event="rowEditCancel" listener="#{allIndustryController.onRowCancel}" update=":MyForm:msgs" />
 			<p:column headerText="industryID">
 				<p:outputLabel value="#{industry.industryID}" id="industryID" />
 			</p:column>
 			<p:column headerText="industryName">
-				<!-- 				<p:cellEditor> -->
+				<p:cellEditor>
 
-				<!-- 					<f:facet name="input"> -->
-				<h:inputText value="#{industry.industryName}" />
-				<!-- 					</f:facet> -->
-				<!-- 					<p:inputText value="#{industry.industryName}" id="industryName" /> -->
-				<!-- 				</p:cellEditor> -->
+					<f:facet name="output">
+						<h:outputText value="#{industry.industryName}" />
+					</f:facet>
+					
+					<f:facet name="input">
+					<p:inputText value="#{industry.industryName}" id="industryName" />
+					</f:facet>
+
+				</p:cellEditor>
 			</p:column>
 
 
 			<p:column headerText="Operations">
-				<p:commandLink value="Delete | " ajax="true"
+				<p:commandLink value="Delete  " ajax="true"
 					action="#{allIndustryController.deleteIndustry(industry.industryID)}"
 					disabled="#{industry.industryID == null}" update="myIndustryList">
 					<p:confirm header="Confirmation" message="Are you sure?"
 						icon="pi pi-exclamation-triangle" />
+						<f:param name="industryID" value="#{industry.industryID}" />
 				</p:commandLink>
 
-				<p:commandButton value="update Name"
+<!-- 				<p:commandButton value="update Name"
 					action="#{allIndustryController.updateIndustry(industry.industryID,industry.industryName)}"
 					oncomplete="PF('cd').show()">
-					<!-- <f:param name="userAccount" value="#{normalUser.account}" /> -->
-				</p:commandButton>
+					<f:param name="userAccount" value="#{normalUser.account}" />
+				</p:commandButton> -->
 
 			</p:column>
-			<!-- 			<p:column >
+			<p:column >
             <p:rowEditor />
-       		</p:column> -->
+       		</p:column> 
 
 			<!-- 							<h:link value="View | " outcome="userDetail.xhtml">
 								pass the parameter to next page, the param name is propertyID, and the value is index + 1.

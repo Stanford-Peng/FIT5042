@@ -33,7 +33,7 @@ public class NormalUser extends User implements Serializable{
 	}
 	
 
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="user")
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="user", cascade = {CascadeType.PERSIST, CascadeType.MERGE}) //delete use will delete all customer
 	public Set<Customer> getCustomers() {
 		return customers;
 	}

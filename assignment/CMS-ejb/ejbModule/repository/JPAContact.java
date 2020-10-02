@@ -21,7 +21,7 @@ public class JPAContact implements ContactRepository {
 	public void addContact(Contact contact) throws Exception {
 		// TODO Auto-generated method stub
 		entityManager.persist(contact);
-		//entityManager.flush();
+		entityManager.flush();
 		
 	}
 

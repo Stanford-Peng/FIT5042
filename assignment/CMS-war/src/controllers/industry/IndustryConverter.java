@@ -1,5 +1,6 @@
 package controllers.industry;
 
+import javax.el.ELContext;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -8,6 +9,7 @@ import javax.faces.convert.ConverterException;
 import javax.faces.convert.FacesConverter;
 import javax.inject.Inject;
 
+import beans.IndustryTypeBean;
 import entity.Industry;
 
 
@@ -16,9 +18,13 @@ public class IndustryConverter implements Converter<Industry> {
 	
 	@Inject
 	AllIndustryController allIndustryController;
-	
+//	@Inject
+//	IndustryTypeBean industryTypeBean;
 	public IndustryConverter() {
-		
+		ELContext context = FacesContext.getCurrentInstance().getELContext();
+
+		allIndustryController= (AllIndustryController) FacesContext.getCurrentInstance().getApplication().getELResolver().getValue(context,
+				null, "allIndustryController");
 	}
 	
 	@Override

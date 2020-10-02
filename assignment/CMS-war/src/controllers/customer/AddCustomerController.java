@@ -39,11 +39,11 @@ public class AddCustomerController {
 			if (result) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("The Customer has been added succesfully"));
 			} else {
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Failed"));
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Failed, database error"));
 			}
 		}catch(Exception ex) {
 			Logger.getLogger(AddCustomerController.class.getName()).log(Level.SEVERE, null, ex);
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Failed"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Failed, unexpected exception"));
 		}
 
 	}

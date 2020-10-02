@@ -3,6 +3,7 @@ package entity;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -66,7 +67,7 @@ public class Industry implements Serializable{
 	}
 
 
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="customerIndustryType")	
+	@OneToMany(cascade = {CascadeType.MERGE}, fetch=FetchType.LAZY, mappedBy="customerIndustryType") //cascade impact the operation from parent to child , mappedBy="customerIndustryType"	
 	public Set<Customer> getCustomers() {
 		return customers;
 	}
@@ -75,6 +76,7 @@ public class Industry implements Serializable{
 	public void setCustomers(Set<Customer> customers) {
 		this.customers = customers;
 	}
+	//unidirectional cannot change anything
 	
 	
 	@Override

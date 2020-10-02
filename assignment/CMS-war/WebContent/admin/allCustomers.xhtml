@@ -33,8 +33,11 @@
 	</div>
 
 	<h:form id="MyForm">
+	<p:growl id="growl" showDetail="true" sticky="true" />
 		<p:dataTable class="table table-bordered table-striped" id="myCustomerList"
-			value="#{viewCustomersController.customers}" var="customer" paginator="true" rows="3"
+			value="#{viewCustomersController.customers}" var="customer" paginator="true" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                 currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                 rowsPerPageTemplate="5,10,15"
 lazy="true"
 			>
 
@@ -95,8 +98,8 @@ lazy="true"
 				<li>
 					<p:commandLink value="Delete" ajax = "true"
 						action="${deleteCustomerController.deleteCustomer(customer.customerID)}"
-						disabled="#{customer.customerID == null}" update = "myCustomerList">
-					<f:param name="customerID" value="#{customer.customerID}" /> <!-- prevent concurrency -->
+						disabled="#{customer.customerID == null}" update = "myCustomerList :MyForm:growl">
+					<f:param name="customerID" value="#{customer.customerID}" />  <!-- prevent concurrency  primeface8.0 donesn't need-->
 						<p:confirm header="Confirmation" message="Are you sure?"
 							icon="pi pi-exclamation-triangle" />
 					</p:commandLink>

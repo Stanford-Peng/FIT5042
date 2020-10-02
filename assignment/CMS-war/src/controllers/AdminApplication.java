@@ -18,6 +18,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import beans.UserBean;
+import controllers.customer.AddCustomerController;
 //import entity.User;
 import entity.NormalUser;
 
@@ -118,7 +119,20 @@ public class AdminApplication implements Serializable {
 	
 	public String deleteUser(String account) {
 		
-		boolean result = userBean.removeUser(account);
+		
+		
+		String param  = String.valueOf(FacesContext.getCurrentInstance()
+                .getExternalContext()
+                .getRequestParameterMap()
+                .get("userAccount"));
+		boolean result = false;
+		if (param == account) {
+		result = userBean.removeUser(account);
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Failed and please refresh the page before deleting"));
+			Logger.getLogger(AddCustomerController.class.getName()).log(Level.SEVERE, "Failed and please refresh the page before deleting");
+		}
+		
 		if (result == true)	{
 			updateUserList();
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("User " + account +" has been deleted succesfully"));

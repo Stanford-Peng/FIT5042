@@ -81,6 +81,7 @@ public class CustomerContactsController {
 			//boolean result = contactBean.addContact(contact);
 			
 			boolean result2 = customerBean.editCustomer(customer);
+			//boolean result2 = contactBean.addContact(contact);
 			if (result2) {
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("The Contact has been added succesfully"));
 				} else {
