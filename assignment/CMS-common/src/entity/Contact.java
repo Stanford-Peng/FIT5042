@@ -144,7 +144,8 @@ public class Contact implements Serializable{
 	
 	@Override
     public String toString() {
-        return this.contactEmail + " - " + this.contactFirstName + " " + this.contactLastName + " - " + this.contactPhoneNo;
+		return this.contactFirstName + " " + this.contactLastName;
+        //return this.contactEmail + " - " + this.contactFirstName + " " + this.contactLastName + " - " + this.contactPhoneNo;
     }
 	
 	

@@ -6,25 +6,32 @@
 
 <h:head>
 	<title>Customer Management System Portal</title>
+	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
 </h:head>
 
 <body>
-	<h:form id="MyForm">
-<!-- 		<h2>#{loginController.pageTitle}</h2> -->
+	<div 
+		style="border-radius: 50px; border: 3px solid black; width: 300px; height: 500px; margin: auto; padding: 10px; margin-top: 100px;">
+		<h:form id="MyForm">
+			<!-- 		<h2>#{loginController.pageTitle}</h2> -->
 
-		<div>
-			<h:commandButton action="#{loginController.navigate('User Authentication')}" value = "Access Normal User"
-				>
-			</h:commandButton>
-		</div>
-		
-		<div>
-			<h:commandButton action="#{loginController.navigate('Admin Authentication')}" value = "Access Administration"
-				>
-			</h:commandButton>
-		</div>
 
-	</h:form>
+				<h:commandButton class="btn btn-info"  style="margin: auto; margin-top: 80px; margin-bottom: 80px; display: block;"
+					action="#{loginController.navigate('User Authentication')}"
+					value="Access Normal User">
+				</h:commandButton>
+
+
+
+				<h:commandButton class="btn btn-info"  style="margin: auto; margin-top: 80px; margin-bottom: 80px; display: block;"
+					action="#{loginController.navigate('Admin Authentication')}"
+					value="Access Administration">
+				</h:commandButton>
+
+
+		</h:form>
+	</div>
+
 </body>
 </html>
 

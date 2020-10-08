@@ -34,14 +34,14 @@
 
 	<h:form id="MyForm">
 	<p:growl id="growl" showDetail="true" sticky="true" />
-		<p:dataTable class="table table-bordered table-striped" id="myCustomerList"
+		<p:dataTable class="table table-bordered table-striped" id="myCustomerList" rows="5"
 			value="#{viewCustomersController.customers}" var="customer" paginator="true" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                  currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
                  rowsPerPageTemplate="5,10,15"
 lazy="true"
 			>
 
-			<p:column headerText="Customer ID">
+			<p:column headerText="ID" style="width:50px;">
 				<p:outputLabel value="#{customer.customerID}" />
 			</p:column>
 			<p:column headerText="Customer Name">
@@ -59,22 +59,22 @@ lazy="true"
 					value="#{empty customer.customerAddress ? '-' : customer.customerAddress}" />
 			</p:column>
 
-			<p:column headerText="Customer Discount">
+			<p:column headerText="Discount" style="width:100px;">
 				<p:outputLabel
 					value="#{empty customer.customerDiscountRate ? '-' : customer.customerDiscountRate}" />
 			</p:column>
 
-			<p:column headerText="Customer Industry Type">
+			<p:column headerText="Industry Type">
 				<p:outputLabel
 					value="#{empty customer.customerIndustryType ? '-' : customer.customerIndustryType}" />
 			</p:column>
 
-			<p:column headerText="Customer Original Country">
+			<p:column headerText="Original Country">
 				<p:outputLabel
 					value="#{empty customer.customerNationality ? '-' : customer.customerNationality}" />
 			</p:column>
 
-			<p:column headerText="Customer Scale">
+			<p:column headerText="Scale" style="width:100px;">
 				<p:outputLabel
 					value="#{empty customer.customerScale ? '-' : (customer.customerScale == 'S') ? 'Small' : (customer.customerScale == 'M') ? 'Medium' : 'Large'}" />
 			</p:column>
