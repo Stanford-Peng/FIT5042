@@ -11,7 +11,9 @@
 	</h:head>
 	<h:body>
 		<h1>Navigation</h1>
-		<h:outputLink value="admin/index.xhtml">Access Administration</h:outputLink>
+		<h:form>
+		<h:commandButton action="/admin/index.xhtml?faces-redirect=true" value="Access Administration"></h:commandButton>
+		</h:form>
 	</h:body>
 </body>
 </html>

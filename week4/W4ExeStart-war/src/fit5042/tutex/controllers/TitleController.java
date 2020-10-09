@@ -31,4 +31,6 @@ public class TitleController {
     public void setPageTitle(String pageTitle) {
         this.pageTitle = pageTitle;
     }
+    
+    
 }

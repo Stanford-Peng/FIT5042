@@ -1,6 +1,7 @@
 package fit5042.tutex.controllers;
 
 import javax.el.ELContext;
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -75,7 +76,7 @@ public class RemoveProperty {
         } catch (Exception ex) {
 
         }
-        showForm = true;
+        //showForm = true;
 
     }
 

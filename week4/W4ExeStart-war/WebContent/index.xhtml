@@ -7,20 +7,23 @@
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
         <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
-        <title>#{titleController.pageTitle}</title>
+       <!--  <title>#{titleController.pageTitle}</title> -->
+        
     </h:head>
     <h:body>
         <div class="container">
             <div class="navbar navbar-inverse">
                 <div class="navbar-brand">
                     #{titleController.pageTitle} - Property  List
-                </div>
+                </div> 
             </div>
 
             <h:form id="MyForm">
+            <h:commandLink action = "#{titleController.setPageTitle('Something')}" value="DO something" />
                 <table class="table table-bordered table-striped">
                     <!-- For each property in properties ArrayList... -->
                     <tr>
+                    
                             <td>
                                 <h:outputLabel id="Id" value="Id"  />
                             </td>

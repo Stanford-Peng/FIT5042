@@ -3,8 +3,12 @@ package fit5042.tutex.controllers;
 import java.util.ArrayList;
 import javax.enterprise.context.ApplicationScoped;
 import fit5042.tutex.mbeans.PropertyManagedBean;
+
+import javax.inject.Inject;
 import javax.inject.Named;
 import fit5042.tutex.repository.entities.Property;
+
+import javax.annotation.PostConstruct;
 import javax.el.ELContext;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
@@ -21,7 +25,8 @@ import javax.faces.context.FacesContext;
 public class PropertyApplication {
 
     //dependency injection of managed bean here so that we can use its methods
-    @ManagedProperty(value = "#{propertyManagedBean}")
+   // @ManagedProperty(value = "#{propertyManagedBean}")
+	@Inject
     PropertyManagedBean propertyManagedBean;
 
     private ArrayList<Property> properties;
@@ -32,17 +37,20 @@ public class PropertyApplication {
         return showForm;
     }
 
+    @PostConstruct
+    public void post() {
+    	updatePropertyList();
+    }
     // Add some property data from db to app 
     public PropertyApplication() throws Exception {
         properties = new ArrayList<>();
 
         //instantiate propertyManagedBean
-        ELContext elContext = FacesContext.getCurrentInstance().getELContext();
-        propertyManagedBean = (PropertyManagedBean) FacesContext.getCurrentInstance().getApplication()
-                .getELResolver().getValue(elContext, null, "propertyManagedBean");
+        //ELContext elContext = FacesContext.getCurrentInstance().getELContext();
+        //propertyManagedBean = (PropertyManagedBean) FacesContext.getCurrentInstance().getApplication().getELResolver().getValue(elContext, null, "propertyManagedBean");
 
         //get properties from db 
-        updatePropertyList();
+        //updatePropertyList();
     }
 
     public ArrayList<Property> getProperties() {
@@ -100,4 +108,6 @@ public class PropertyApplication {
         
         setProperties(properties);
     }
+    
+    
 }

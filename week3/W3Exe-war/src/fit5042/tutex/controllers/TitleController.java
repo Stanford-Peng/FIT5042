@@ -6,6 +6,11 @@
 package fit5042.tutex.controllers;
 
 import javax.inject.Named;
+
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 
@@ -21,6 +26,8 @@ public class TitleController {
 
     public TitleController() {
         // Set the page title 
+    	//System.out.println("TitleController created");
+    	Logger.getLogger(TitleController.class.getName()).log(Level.SEVERE, "TitleController Created");
         pageTitle = "Real Estate Agency";
     }
 

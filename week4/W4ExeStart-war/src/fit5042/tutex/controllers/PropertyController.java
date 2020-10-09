@@ -24,6 +24,7 @@ public class PropertyController {
     public void setPropertyId(int propertyId) {
         this.propertyId = propertyId;
     }
+    
     private fit5042.tutex.repository.entities.Property property;
 
     public PropertyController() {

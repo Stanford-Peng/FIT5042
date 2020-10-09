@@ -8,8 +8,10 @@ import fit5042.tutex.repository.entities.Address;
 import fit5042.tutex.repository.entities.ContactPerson;
 import fit5042.tutex.repository.entities.Property;
 import javax.ejb.EJB;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.SessionScoped;
+
+//import javax.faces.bean.ManagedBean;
+//import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
@@ -17,13 +19,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
 
 /**
  *
  * @author messomc
  * @author guan
  */
-@ManagedBean(name = "propertyManagedBean")
+//@ManagedBean(name = "propertyManagedBean")
+@Named
 @SessionScoped
 
 public class PropertyManagedBean implements Serializable {

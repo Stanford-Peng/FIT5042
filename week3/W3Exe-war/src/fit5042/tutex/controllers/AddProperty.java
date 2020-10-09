@@ -50,6 +50,7 @@ public class AddProperty {
     }
 
     public AddProperty() {
+    	//System.console().writer().print("add property controller created");
         ELContext context
                 = FacesContext.getCurrentInstance().getELContext();
 
