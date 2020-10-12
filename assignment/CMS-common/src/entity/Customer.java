@@ -34,7 +34,7 @@ import javax.validation.constraints.Size;
 @Table(name="CUSTOMER")
 @NamedQueries({
 	@NamedQuery(name = "Customer.findAll", query = "SELECT c FROM Customer c order by c.customerID desc")
-	//,@NamedQuery(name = "Customer.findByUser", query = "SELECT c FROM Customer c WHERE c.normalUser.account = :account")
+	,@NamedQuery(name = "Customer.findByUser", query = "SELECT c FROM Customer c WHERE c.normalUser.account = :account") // cannot use the parent attribute
 })
 public class Customer implements Serializable {
 	
@@ -155,11 +155,11 @@ public class Customer implements Serializable {
 	
 	
 	@ManyToOne(fetch=FetchType.EAGER)	
-	@JoinColumn(name="normalUser", referencedColumnName="account") //careful
-	public NormalUser getUser() {
+	@JoinColumn(name="normalUser", referencedColumnName="account") //careful, always access via getter naming error cause biggest bug
+	public NormalUser getNormalUser() {
 		return normalUser;
 	}
-	public void setUser(NormalUser normalUser) {
+	public void setNormalUser(NormalUser normalUser) {
 		this.normalUser = normalUser;
 	}
 	

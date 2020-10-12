@@ -15,13 +15,13 @@
 
 		<div class="collapse navbar-collapse">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><h:link class="nav-link"
+				<li class="nav-item"><h:link class="nav-link"
 						value="Home | " outcome="index.xhtml" /></li>
 				<li class="nav-item"><h:link class="nav-link"
 						value="Manage All Users | " outcome="allUsers.xhtml" /></li>
 				<li class="nav-item"><h:link class="nav-link"
 						value="Manage All Customers |" outcome="allCustomers.xhtml" /></li>
-				<li class="nav-item"><h:link class="nav-link"
+				<li class="nav-item active"><h:link class="nav-link"
 						value="Manage Industries |" outcome="allIndustries.xhtml" /></li>
 				<h:form>
 					<li class="nav-item"><h:commandLink class="nav-link"
@@ -104,9 +104,9 @@
 		</p:confirmDialog>
 		<h:outputText value=" " />
 
-		<p:dialog header="Save the name" severity="alert" widgetVar="cd">
+<!-- 		<p:dialog header="Save the name" severity="alert" widgetVar="cd">
 			<h:outputText value="The Industry Name is saved" />
-		</p:dialog>
+		</p:dialog> -->
 
 		<div>
 			<h:commandButton id="add" value="Add"

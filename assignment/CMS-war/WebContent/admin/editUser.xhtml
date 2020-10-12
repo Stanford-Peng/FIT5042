@@ -25,7 +25,7 @@
 									
 							<td>
 							<h:outputLabel id="account">
-									#{editUserController.editUser.account}
+									#{editUserController.account}
 							</h:outputLabel>
 							</td>
 
@@ -71,7 +71,7 @@
 						action="#{adminApplication.updateUser(editUserController.editUser)}"
 						class="btn btn-primary" >
 						<f:param name="userAccount"
-					value="#{editUserController.editUser.account}" />
+					value="#{editUserController.account}" />
 					</h:commandButton>
 						
 					<h:link id="close" value="Close" outcome="allUsers.xhtml"

@@ -51,7 +51,7 @@ public class ContactBean {
 		
 	}
 	
-	public boolean editCustomer(Contact contact) {
+	public boolean editContact(Contact contact) {
 		try {
 			contactRepository.updateContact(contact);
 			return true;
@@ -73,6 +73,16 @@ public class ContactBean {
 		}
 		return null;
 		
+	}
+	
+	public Contact getContactByEmail(String contactEmail) {
+		try {
+			return contactRepository.getContactByEmail(contactEmail);
+		}
+		catch(Exception ex) {
+			Logger.getLogger(ContactBean.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		return null;
 	}
 	
 

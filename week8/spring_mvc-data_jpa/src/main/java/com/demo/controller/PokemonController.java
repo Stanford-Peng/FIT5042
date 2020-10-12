@@ -4,6 +4,7 @@ import com.demo.model.Pokemon;
 import com.demo.service.PokemonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +30,7 @@ public class PokemonController {
     // When the path is routed to '/home' below method to be called and view returned is home
     @RequestMapping(method = RequestMethod.GET, value = "/home")
     public ModelAndView home1() {
+        //Model model =
         ModelAndView modelAndView = new ModelAndView("home");
         modelAndView.addObject("pageTitle", "Home Page");
         modelAndView.addObject("message", "Hi Welcome to Sprint MVC");
@@ -49,7 +51,9 @@ public class PokemonController {
 
     // When the path is routed to '/new' below method to be called and view returned is newPokemon
     @RequestMapping(method = RequestMethod.GET, value ="/new")
-    public String newPokemonForm(Map<String, Object> model) { //declared type:map, actual type:ModelMap;
+    public String newPokemonForm(Map<String, Object> model) {
+        //declared type:map, actual type:ModelMap;
+        System.out.println(model.getClass());
         Pokemon Pokemon = new Pokemon();
         model.put("pokemon", Pokemon);
         return "newPokemon";

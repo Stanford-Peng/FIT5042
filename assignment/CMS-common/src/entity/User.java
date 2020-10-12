@@ -69,6 +69,11 @@ public class User implements Serializable{
 		this.userType = userType;
 	}
 	
+	@Override
+	public String toString() {
+		return account;
+	}
+	
 	
 
 }

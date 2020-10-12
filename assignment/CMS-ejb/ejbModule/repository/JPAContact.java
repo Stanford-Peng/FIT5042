@@ -62,6 +62,14 @@ public class JPAContact implements ContactRepository {
 		return contacts;
 	}
 	
+	@Override
+	public Contact getContactByEmail(String contactEmail) throws Exception {
+		
+		Contact contact = entityManager.find(Contact.class, contactEmail);
+		return contact;
+		
+		
+	}
 	
 	
 }

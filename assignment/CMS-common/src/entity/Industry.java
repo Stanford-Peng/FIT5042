@@ -83,4 +83,37 @@ public class Industry implements Serializable{
 	public String toString() {		
 		return industryID + "-" + (industryName == null ? "" : industryName);
 	}
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + industryID;
+		result = prime * result + ((industryName == null) ? 0 : industryName.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Industry other = (Industry) obj;
+		if (industryID != other.industryID)
+			return false;
+		if (industryName == null) {
+			if (other.industryName != null)
+				return false;
+		} else if (!industryName.equals(other.industryName))
+			return false;
+		return true;
+	}
+	
+	
+	
 }

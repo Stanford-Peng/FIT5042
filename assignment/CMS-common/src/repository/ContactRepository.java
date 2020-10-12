@@ -20,5 +20,7 @@ public interface ContactRepository {
 	public void deleteContact(String contactEmail) throws Exception;
 	
 	public List<Contact> getContactsByCustomerID(int customerID) throws Exception;
+	
+	public Contact getContactByEmail(String contactEmail) throws Exception;
 
 }

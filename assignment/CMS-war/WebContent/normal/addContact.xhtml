@@ -1,17 +1,16 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-<title> Edit Contact</title>
+<title> Add Contact</title>
 <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
-</h:head> 
-<body> 
-
-<div class="navbar-brand">CMS - add a contact for customer
+</h:head>
+<body>
+	<div class="navbar-brand">CMS - add a contact for customer
 		#{customerContactsController.customerID}</div>
 
 	<h:form>
@@ -19,10 +18,10 @@
 			<tr>
 				<td width="200"><h:outputLabel value="Email" for="Email" /></td>
 
-				<td><h:outputLabel id="Email" value = "#{editContactController.contactToEdit.contactEmail}" title="Email" required="true" type="email" validatorMessage="Please enter a valid Email Address."
+				<td><h:inputText id="Email" value = "#{customerContactsController.contactToAdd.contactEmail}" title="Email" required="true" type="email" validatorMessage="Please enter a valid Email Address."
 							requiredMessage="Please enter an Email address" >
-								 
-					</h:outputLabel></td>
+								 <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+					</h:inputText></td>
 					<h:message for="Email"
 						class="#{!Email.valid ? 'text-danger' : 'none'}" />
 
@@ -31,7 +30,7 @@
 			<tr>
 				<td><h:outputLabel value="Contact First Name" for="contactFirstName" /></td>
 				<td><h:inputText id="contactFirstName"
-						value="#{editContactController.contactToEdit.contactFirstName}" title="contactFirstName"
+						value="#{customerContactsController.contactToAdd.contactFirstName}" title="contactFirstName"
 						required="true" requiredMessage="Please enter the first name"
 						>
 					</h:inputText> 
@@ -43,7 +42,7 @@
 			<tr>
 				<td width="200"><h:outputLabel value="Contact Last Name" for="contactLastName" /></td>
 
-				<td><h:inputText id="contactLastName" value = "#{editContactController.contactToEdit.contactLastName}" title="contactLastName" required="true"
+				<td><h:inputText id="contactLastName" value = "#{customerContactsController.contactToAdd.contactLastName}" title="contactLastName" required="true"
 							requiredMessage="Please enter the last name">
 					</h:inputText></td>
 					<h:message for="contactLastName"
@@ -55,7 +54,7 @@
 						for="contactGender" /></td>
 
 				<td><h:selectOneMenu id="contactGender"
-						value="#{ editContactController.contactToEdit.contactGender }" required = "true" >
+						value="#{ customerContactsController.contactToAdd.contactGender }" required = "true" >
 						<f:selectItem itemLabel="Select One" />
 						<f:selectItem itemLabel="Male" itemValue="M" />
 						<f:selectItem itemLabel="Female" itemValue="F" />
@@ -68,7 +67,7 @@
 			<tr>
 				<td width="200"><h:outputLabel value="DOB" for="contactDOB" /></td>
 
-				<td><p:calendar id="contactDOB" value = "#{editContactController.contactToEdit.contactDOB}" required="true" showOn="button"
+				<td><p:calendar id="contactDOB" value = "#{customerContactsController.contactToAdd.contactDOB}" required="true" showOn="button"
 							requiredMessage="Please select a date of birth" navigator="true" pattern = "MM-dd-yyyy">
 							<f:convertDateTime pattern = "mm-dd-yyyy" />
 							</p:calendar>
@@ -82,7 +81,7 @@
 			<tr>
 				<td width="200"><h:outputLabel value="Phone number" for="contactPhoneNo" /></td>
 
-				<td><p:inputMask id="contactPhoneNo" mask="0999999999" value = "#{editContactController.contactToEdit.contactPhoneNo}" required="true" validatorMessage="Please enter a valid phone number."
+				<td><p:inputMask id="contactPhoneNo" mask="0999999999" value = "#{customerContactsController.contactToAdd.contactPhoneNo}" required="true" validatorMessage="Please enter a valid phone number."
 							requiredMessage="Please enter a phone number" >
 								 <f:validateRegex pattern="[0]\d{9}" />
 					</p:inputMask></td>
@@ -95,10 +94,9 @@
 
 		</table>
 		<h:commandButton id="submit" value="Submit"
-			action="#{editContactController.editContact(editContactController.contactToEdit)}" class="btn btn-primary" >
+			action="#{customerContactsController.addContact(customerContactsController.contactToAdd)}" class="btn btn-primary" >
 									<f:param name="customerID"
-					value="#{editContactController.customerID}" />
-					<f:param name="contactEmail" value="#{editContactController.contactEmail}" />
+					value="#{customerContactsController.customerID}" />
 		</h:commandButton>
 
 		<h:link id="close" value="Close" outcome="assignContact.xhtml"
@@ -109,5 +107,6 @@
 		
 	</h:form>
 
-</body> 
+
+</body>
 </html>

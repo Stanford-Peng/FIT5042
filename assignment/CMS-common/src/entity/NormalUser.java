@@ -2,6 +2,7 @@ package entity;
 
 
 import java.io.Serializable;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -25,20 +26,31 @@ public class NormalUser extends User implements Serializable{
 	/**
 	 * 
 	 */
+	//private String account;
 	private static final long serialVersionUID = 1L;
-	private Set<Customer> customers;
+	private LinkedHashSet<Customer> customers;
 	
 	public NormalUser() {
 		super();
 	}
 	
 
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="user", cascade = {CascadeType.PERSIST, CascadeType.MERGE}) //delete use will delete all customer
-	public Set<Customer> getCustomers() {
+	@OneToMany(fetch=FetchType.EAGER, mappedBy="normalUser", cascade = {CascadeType.PERSIST, CascadeType.MERGE}) //delete user will delete all customer
+	public LinkedHashSet<Customer> getCustomers() {
 		return customers;
 	}
 
-	public void setCustomers(Set<Customer> customers) {
+	public void setCustomers(LinkedHashSet<Customer> customers) {
 		this.customers = customers;
 	}
+	
+//	@Column(name = "account")
+//	//have to override in order to get account to use
+//	public String getAccount() {
+//		return account;
+//	}
+//	
+//	public void setAccount(String account) {
+//		this.account = account;
+//	}
 }

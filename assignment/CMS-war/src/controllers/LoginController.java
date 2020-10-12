@@ -56,6 +56,11 @@ public class LoginController implements Serializable{
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         return "/index.xhtml?faces-redirect=true";
     }
+    
+    public String getUserName() {
+    	String username = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
+    	return username;
+    }
 	
 //	public void go(String sth) throws IOException {
 //		

@@ -1,14 +1,44 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-<title> Assign user</title>
-<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
-</h:head> 
-<body> 
+	<title>Assign user</title>
+	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+</h:head>
+<body>
+	<h:form id="MyForm">
+		<p:growl id="msgs" showDetail="true"/>
+		<h3>Select One User</h3>
+		<span>Current User : </span> <span>#{empty editCustomerController.account ? "No user currently" : editCustomerController.account}</span>
+		<p:selectOneRadio id="assignedUser"  value='#{editCustomerController.account}' layout="responsive" columns="5">			
+			<f:selectItems value="#{userBean.allUsers}" var="u"
+				itemLabel="#{u.account}" itemValue="#{u.account}" />
+								
+		</p:selectOneRadio>
+		<div>
+			<p:commandButton value="Assign" action="#{editCustomerController.assignUser()}" class="btn btn-primary" ajax="true" update="msgs MyForm">
+ 				<p:confirm header="Confirmation" message="Are you sure?"
+						icon="pi pi-exclamation-triangle" /> 		
+						<f:param name="customerID"
+					value="#{editCustomerController.customerID}" />	<!-- Even using ajax, one request will still invalidate a back bean -->
+			</p:commandButton>
+			
+			<p:link id="close" value="Close" outcome="allCustomers.xhtml" class="btn btn-primary">			
+			</p:link>
+		</div>
+		
+		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+			<p:commandButton value="Yes" type="button"
+				styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+			<p:commandButton value="No" type="button"
+				styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+		</p:confirmDialog>
+		
+	</h:form>
 
-</body> 
+</body>
 </html>
