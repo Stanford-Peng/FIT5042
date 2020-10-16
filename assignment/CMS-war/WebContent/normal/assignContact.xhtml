@@ -61,14 +61,25 @@
 				<f:param name = "customerID" value = "#{customerContactsController.customerID}"></f:param>
 			</h:link>
 
-			<h:commandLink value="Delete"
+			<p:commandLink value="Delete" ajax="true"
 				action="#{customerContactsController.deleteContact(contact.contactEmail)}"
-				disabled="#{contact.contactEmail == ''}">
-			</h:commandLink>
+				disabled="#{contact.contactEmail == ''}" update="myList">
+				<p:confirm header="Confirmation" message="Are you sure?"
+								icon="pi pi-exclamation-triangle" />
+				<f:param name = "customerID" value = "#{customerContactsController.customerID}"></f:param>
+			</p:commandLink>
 
 			</p:column>
 
 		</p:dataTable>
+		
+		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+			<p:commandButton value="Yes" type="button"
+				styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+			<p:commandButton value="No" type="button"
+				styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+		</p:confirmDialog>
+		
 		<div>
 			<h:commandButton id="add" value="Add" action="addContact.xhtml"
 				class="btn btn-primary">

@@ -23,7 +23,7 @@
 								 <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
 					</h:inputText></td>
 					<h:message for="Email"
-						class="#{!Email.valid ? 'text-danger' : 'none'}" />
+						class="#{!Email.valid ? 'badge badge-warning' : 'none'}" />
 
 			</tr>
 
@@ -35,7 +35,7 @@
 						>
 					</h:inputText> 
 					<h:message for="contactFirstName"
-						class="#{!contactFirstName.valid ? 'text-danger' : 'none'}" /></td>
+						class="#{!contactFirstName.valid ? 'badge badge-warning' : 'none'}" /></td>
 
 			</tr>
 
@@ -46,7 +46,7 @@
 							requiredMessage="Please enter the last name">
 					</h:inputText></td>
 					<h:message for="contactLastName"
-						class="#{!contactLastName.valid ? 'text-danger' : 'none'}" />
+						class="#{!contactLastName.valid ? 'badge badge-warning' : 'none'}" />
 
 			</tr>
 			<tr>
@@ -61,7 +61,7 @@
 						<f:selectItem itemLabel="Other" itemValue="O" />
 					</h:selectOneMenu></td>
 					<h:message for="contactGender"
-						class="#{!contactGender.valid ? 'text-danger' : 'none'}" />
+						class="#{!contactGender.valid ? 'badge badge-warning' : 'none'}" />
 			</tr>			
 			
 			<tr>
@@ -74,7 +74,7 @@
 								 
 					</td>
 					<p:message for="contactDOB"
-						class="#{!contactDOB.valid ? 'text-danger' : 'none'}" />
+						class="#{!contactDOB.valid ? 'badge badge-warning' : 'none'}" />
 
 			</tr>
 			
@@ -86,7 +86,7 @@
 								 <f:validateRegex pattern="[0]\d{9}" />
 					</p:inputMask></td>
 					<p:message for="contactPhoneNo"
-						class="#{!contactPhoneNo.valid ? 'text-danger' : 'none'}" />
+						class="#{!contactPhoneNo.valid ? 'badge badge-warning' : 'none'}" />
 
 			</tr>
 			

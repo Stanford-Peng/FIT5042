@@ -33,6 +33,7 @@
 		</div>
 
 		<h:form id="MyForm">
+		<p:growl id="growl" showDetail="true" sticky="true" />
 			<p:dataTable class="table table-bordered table-striped" id="myList"
 				value="#{adminApplication.users}" var="normalUser"
 				>
@@ -43,7 +44,7 @@
 				<p:column headerText="Operations">
 					<p:commandLink value="Delete |" ajax="true"
 						action="#{adminApplication.deleteUser(normalUser.account)}"
-						disabled="#{normalUser.account == null}" update="myList">
+						disabled="#{normalUser.account == null}" update="myList MyForm:growl">
 						<f:param name="userAccount" value="#{normalUser.account}" />
 						<p:confirm header="Confirmation" message="Are you sure?"
 							icon="pi pi-exclamation-triangle" />

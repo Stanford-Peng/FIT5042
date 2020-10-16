@@ -126,7 +126,7 @@ public class AdminApplication implements Serializable {
                 .getRequestParameterMap()
                 .get("userAccount"));
 		boolean result = false;
-		if (param == account) {
+		if (param.equals(account)) {
 		result = userBean.removeUser(account);
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Failed and please refresh the page before deleting"));
@@ -137,7 +137,7 @@ public class AdminApplication implements Serializable {
 			updateUserList();
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("User " + account +" has been deleted succesfully"));
 		} else {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Failed, it may not exit and please click view all to refresh page"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Failed, it may not exist and please click view all to refresh page"));
 		}	
 				
 		return "allUsers.xhtml";
@@ -145,7 +145,7 @@ public class AdminApplication implements Serializable {
 	
 	public void updateUser(NormalUser user) {
 		try {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("User " + toHexString(getSHA(user.getPassword())) +" has been changed password succesfully "));
+			//FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("User " + toHexString(getSHA(user.getPassword())) +" has been changed password succesfully "));
 		    user.setPassword(toHexString(getSHA(user.getPassword())));
 		} catch (NoSuchAlgorithmException e) {  
             System.out.println("Exception thrown for incorrect algorithm: " + e);  

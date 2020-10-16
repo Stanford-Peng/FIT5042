@@ -74,18 +74,26 @@ public class CustomerContactsController {
 	public void addContact(Contact contact) {
 		try {
 			Customer customer = customerBean.searchCustomerByID(customerID);
-			contact.setCustomer(customer);
-			// add the relationship from the other side
-			customer.getCustomerContact().add(contact);
-			// boolean result = contactBean.addContact(contact);
+			
+			
+			boolean result = contactBean.addContact(contact);
 
-			boolean result2 = customerBean.editCustomer(customer);
 			// boolean result2 = contactBean.addContact(contact);
-			if (result2) {
+			if (result) {
+				// add the relationship from the other side
+				contact.setCustomer(customer);
+				customer.getCustomerContact().add(contact);
+				// boolean result = contactBean.addContact(contact);
+				boolean result2 = customerBean.editCustomer(customer);
+				if(result2) {
 				FacesContext.getCurrentInstance().addMessage(null,
 						new FacesMessage("The Contact has been added succesfully"));
+				}else {
+					FacesContext.getCurrentInstance().addMessage(null,
+							new FacesMessage("failed when merge it to customer"));
+				}
 			} else {
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Failed"));
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Failed when adding contact"));
 			}
 
 		} catch (Exception ex) {
@@ -97,12 +105,25 @@ public class CustomerContactsController {
 
 	public void deleteContact(String contactEmail) {
 		try {
-			boolean result = contactBean.removeContact(contactEmail);
-			if (result) {
+			Customer customer = customerBean.searchCustomerByID(customerID);
+			Contact contact = contactBean.getContactByEmail(contactEmail);
+			
+			boolean result0 = contactBean.removeContact(contactEmail);
+
+			
+			if ( result0) {
+				customer.getCustomerContact().remove(contact);				
+				boolean result = customerBean.editCustomer(customer);
+				if(result) {
+				init();
 				FacesContext.getCurrentInstance().addMessage(null,
 						new FacesMessage("The Contact has been deleted succesfully"));
+				}else {
+					FacesContext.getCurrentInstance().addMessage(null,
+							new FacesMessage("Failed when removing from customer"));
+				}
 			} else {
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Failed"));
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Failed when removing contact"));
 			}
 
 		} catch (Exception ex) {

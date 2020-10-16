@@ -41,7 +41,7 @@
 
 	<h:form id="MyForm">
 		<p:growl id="growl" showDetail="true" sticky="true" />
-		<p:dataTable class="table table-bordered table-striped"
+		<p:dataTable class="table table-bordered table-striped table-responsive"
 			id="myCustomerList" rows="5"
 			value="#{viewCustomersController.customers}" var="customer"
 			paginator="true"
@@ -152,11 +152,11 @@
 		<h:outputText value=" " />
 
 		<div>
-			<p:commandButton id="add" value="Add" action="addCustomer.xhtml" ajax="false" />
+			<p:commandButton id="add" value="Add" action="addCustomer.xhtml" ajax="false" class="btn btn-primary"/>
 
 			<p:commandButton id="viewAll" ajax="true" value="View All"
 				update="myCustomerList"
-				action="#{viewCustomersController.viewAllCustomers()}" />
+				action="#{viewCustomersController.viewAllCustomers()}" class="btn btn-primary"/>
 		</div>
 
 
@@ -168,7 +168,7 @@
 			<p:commandButton id="search" ajax="true" value="Search by Name/ID"
 				disabled="#{viewCustomersController.searchedString == null}"
 				update="myCustomerList"
-				action="#{viewCustomersController.searchCustomerByNameId()}" />
+				action="#{viewCustomersController.searchCustomerByNameId()}" class="btn btn-primary"/>
 		</div>
 
 		<div>
@@ -198,7 +198,8 @@
 			
 			<p:commandButton id="searchAdvance" ajax="true" value="Search"
 				update="myCustomerList"
-				action="#{viewCustomersController.searchByIndustryScale(viewCustomersController.searchIndustryType,viewCustomersController.searchScale)}"/>
+				action="#{viewCustomersController.searchByIndustryScale(viewCustomersController.searchIndustryType,viewCustomersController.searchScale)}"
+				class="btn btn-primary"/>
 
 		</div>
 

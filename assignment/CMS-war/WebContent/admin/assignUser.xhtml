@@ -14,7 +14,7 @@
 		<p:growl id="msgs" showDetail="true"/>
 		<h3>Select One User</h3>
 		<span>Current User : </span> <span>#{empty editCustomerController.account ? "No user currently" : editCustomerController.account}</span>
-		<p:selectOneRadio id="assignedUser"  value='#{editCustomerController.account}' layout="responsive" columns="5">			
+		<p:selectOneRadio id="assignedUser"  value='#{editCustomerController.account}' layout="responsive" columns="5">	
 			<f:selectItems value="#{userBean.allUsers}" var="u"
 				itemLabel="#{u.account}" itemValue="#{u.account}" />
 								
@@ -23,8 +23,10 @@
 			<p:commandButton value="Assign" action="#{editCustomerController.assignUser()}" class="btn btn-primary" ajax="true" update="msgs MyForm">
  				<p:confirm header="Confirmation" message="Are you sure?"
 						icon="pi pi-exclamation-triangle" /> 		
+						
 						<f:param name="customerID"
-					value="#{editCustomerController.customerID}" />	<!-- Even using ajax, one request will still invalidate a back bean -->
+					value="#{editCustomerController.customerID}" />		
+					<!-- Even using ajax, one request will still invalidate a back bean -->
 			</p:commandButton>
 			
 			<p:link id="close" value="Close" outcome="allCustomers.xhtml" class="btn btn-primary">			

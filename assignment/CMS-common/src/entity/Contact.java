@@ -147,6 +147,33 @@ public class Contact implements Serializable{
 		return this.contactFirstName + " " + this.contactLastName;
         //return this.contactEmail + " - " + this.contactFirstName + " " + this.contactLastName + " - " + this.contactPhoneNo;
     }
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((contactEmail == null) ? 0 : contactEmail.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Contact other = (Contact) obj;
+		if (contactEmail == null) {
+			if (other.contactEmail != null)
+				return false;
+		} else if (!contactEmail.equals(other.contactEmail))
+			return false;
+		return true;
+	}
 	
 	
 	

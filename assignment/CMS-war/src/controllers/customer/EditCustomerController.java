@@ -29,10 +29,7 @@ public class EditCustomerController {
 	private String account;
 	
 	public EditCustomerController() {
-		this.customerID = Integer.valueOf(FacesContext.getCurrentInstance()
-                .getExternalContext()
-                .getRequestParameterMap()
-                .get("customerID"));
+		this.customerID = Integer.valueOf(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("customerID"));
 	}
 	
 	@PostConstruct
@@ -62,10 +59,14 @@ public class EditCustomerController {
 	}
 	
 	public void assignUser() {
-		//remove user 's reference to customer
-		customer.getNormalUser().getCustomers().remove(customer);
+		//remove user 's reference to customer if there is one
+		if(customer.getNormalUser() != null)
+		{
+			customer.getNormalUser().getCustomers().remove(customer);
+		}
 		//get the new user
-		NormalUser user = userBean.searchUserByAccount(this.account);
+		NormalUser user = userBean.searchUserByAccount(account);
+		
 		//set new user 's reference to this customer
 		user.getCustomers().add(customer);
 		//set customer 's reference to new user

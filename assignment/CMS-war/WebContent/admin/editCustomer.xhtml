@@ -32,7 +32,7 @@
 									pt:placeholder="Company">
 									<f:validateLength minimum="4" />
 								</h:inputText> <h:message for="customerName"
-									class="#{!customerName.valid ? 'text-danger' : 'none'}" /></td>
+									class="#{!customerName.valid ? 'badge badge-warning' : 'none'}" /></td>
 
 						</tr>
 
@@ -50,7 +50,7 @@
 									<f:validateDoubleRange minimum="0.0" maximum="1.0" />
 
 								</h:inputText> <h:message for="customerDiscountRate"
-									class="#{!customerDiscountRate.valid ? 'text-danger' : 'none'}" />
+									class="#{!customerDiscountRate.valid ? 'badge badge-warning' : 'none'}" />
 							</td>
 
 						</tr>
@@ -69,7 +69,7 @@
 									<!-- 									<f:convertNumber integerOnly="true"/> -->
 									<f:validateLongRange minimum="1" maximum="1000" />
 								</h:inputText> <h:message for="streetNumber"
-									class="#{!streetNumber.valid ? 'text-danger' : 'none'}" /></td>
+									class="#{!streetNumber.valid ? 'badge badge-warning' : 'none'}" /></td>
 
 						</tr>
 
@@ -83,7 +83,7 @@
 									requiredMessage="Please enter the street address!"
 									pt:placeholder="Dandenong Rd">
 								</h:inputText> <br /> <h:message for="streetAddress"
-									class="#{!streetAddress.valid ? 'text-danger' : 'none'}" /></td>
+									class="#{!streetAddress.valid ? 'badge badge-warning' : 'none'}" /></td>
 						</tr>
 
 						<tr class="#{!suburb.valid ? 'alert alert-warning' : 'none'}">
@@ -93,7 +93,7 @@
 									title="suburb" required="true"
 									requiredMessage="Please enter the suburb!"
 									pt:placeholder="Caulfield East" /> <br /> <h:message
-									for="suburb" class="#{!suburb.valid ? 'text-danger' : 'none'}" /></td>
+									for="suburb" class="#{!suburb.valid ? 'badge badge-warning' : 'none'}" /></td>
 
 						</tr>
 
@@ -113,7 +113,7 @@
 									<f:selectItem itemLabel="Western Australia" itemValue="WA" />
 									<f:selectItem itemLabel="Queensland" itemValue="QLD" />
 								</h:selectOneMenu> <br /> <h:message for="state"
-									class="#{!state.valid ? 'text-danger' : 'none'}" /></td>
+									class="#{!state.valid ? 'badge badge-warning' : 'none'}" /></td>
 
 						</tr>
 
@@ -128,7 +128,7 @@
 									<!-- <f:convertNumber integerOnly="true" /> -->
 									<f:validateLongRange minimum="200" maximum="4700" />
 								</p:inputMask> <br /> <h:message for="postcode"
-									class="#{!postcode.valid ? 'text-danger' : 'none'}" /></td>
+									class="#{!postcode.valid ? 'badge badge-warning' : 'none'}" /></td>
 
 						</tr>
 
@@ -145,7 +145,7 @@
 									pt:placeholder="China">
 									<f:validateLength minimum="3" />
 								</h:inputText> <h:message for="customerNationality"
-									class="#{!customerNationality.valid ? 'text-danger' : 'none'}" />
+									class="#{!customerNationality.valid ? 'badge badge-warning' : 'none'}" />
 							</td>
 
 						</tr>
@@ -162,7 +162,7 @@
 									<f:selectItem itemLabel="Medium" itemValue="M" />
 									<f:selectItem itemLabel="Large" itemValue="L" />
 								</h:selectOneMenu> <h:message for="customerScale"
-									class="#{!customerScale.valid ? 'text-danger' : 'none'}" /></td>
+									class="#{!customerScale.valid ? 'badge badge-warning' : 'none'}" /></td>
 
 
 						</tr>

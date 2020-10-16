@@ -148,9 +148,9 @@
 		<h:outputText value=" " />
 
 		<div>
-			<p:commandButton id="add" value="Add" action="addCustomer.xhtml" ajax="false" />
+			<p:commandButton id="add" value="Add" action="addCustomer.xhtml" ajax="false" class="btn btn-primary"/>
 
-			<p:commandButton id="viewAll" ajax="true" value="View All"
+			<p:commandButton id="viewAll" ajax="true" value="View All" class="btn btn-primary"
 				update="myCustomerList"
 				action="#{viewCustomersController.viewAllCustomers()}" />
 		</div>
@@ -164,7 +164,8 @@
 			<p:commandButton id="search" ajax="true" value="Search by Name/ID"
 				disabled="#{viewCustomersController.searchedString == null}"
 				update="myCustomerList"
-				action="#{viewCustomersController.searchCustomerByNameId()}" />
+				action="#{viewCustomersController.searchCustomerByNameId()}" 
+				class="btn btn-primary"/>
 		</div>
 
 		<div>
@@ -195,7 +196,8 @@
 			<p:commandButton id="searchAdvance" ajax="true"
 				value="Search"
 				update="myCustomerList"
-				action="#{viewCustomersController.searchByIndustryScale(viewCustomersController.searchIndustryType,viewCustomersController.searchScale)}"/>
+				action="#{viewCustomersController.searchByIndustryScale(viewCustomersController.searchIndustryType,viewCustomersController.searchScale)}"
+				class="btn btn-primary"/>
 
 
 		</div>

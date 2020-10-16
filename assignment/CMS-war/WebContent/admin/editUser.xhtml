@@ -40,7 +40,7 @@
 									value="#{editUserController.editUser.password}" title="password" required="true" requiredMessage="Please enter the password" validatorMessage="The account length has to be greater than 4">
 									<f:validateLength minimum = "4"/>
 							</h:inputSecret>									
-									<h:message for="password" class="#{!password.valid ? 'label label-warning' : 'none'}" /> 
+									<h:message for="password" class="#{!password.valid ? 'badge badge-warning' : 'none'}" /> 
 							</td>
 								
 						</tr>
@@ -55,7 +55,7 @@
 									<f:validateLength minimum = "4"/>
 							</h:inputSecret>
 									
-								<h:message for="passwordCheck" class="#{!passwordCheck.valid ? 'label label-warning' : 'none'}" />
+								<h:message for="passwordCheck" class="#{!passwordCheck.valid ? 'badge badge-warning' : 'none'}" />
 								<o:validateEqual components="password passwordCheck"
 									message="Passwords do not match!" showMessageFor="passwordCheck" />
 									<!-- reference:https://stackoverflow.com/questions/2909021/jsf-2-0-validate-equality-of-2-inputsecret-fields-confirm-password-without-wr -->
