@@ -42,7 +42,7 @@ public class IndustryConverter implements Converter<Industry> {
                 }
 
             } catch (NumberFormatException exception) {
-                throw new ConverterException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Conversion Error", "Not a valid contact person"));
+                throw new ConverterException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Conversion Error", "Not a valid contact industry"));
             }
         }
 
