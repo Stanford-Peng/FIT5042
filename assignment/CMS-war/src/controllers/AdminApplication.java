@@ -17,8 +17,10 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import beans.CustomerBean;
 import beans.UserBean;
 import controllers.customer.AddCustomerController;
+import entity.Customer;
 //import entity.User;
 import entity.NormalUser;
 
@@ -33,7 +35,10 @@ import java.security.NoSuchAlgorithmException;
 public class AdminApplication implements Serializable {
 	
 	@Inject
-	UserBean userBean;
+	private UserBean userBean;
+	
+	@Inject
+	private CustomerBean customerBean;
 	
 	private List<NormalUser> users = new ArrayList<NormalUser>();
 	
@@ -126,14 +131,25 @@ public class AdminApplication implements Serializable {
                 .getRequestParameterMap()
                 .get("userAccount"));
 		boolean result = false;
+		boolean result0 = false;
 		if (param.equals(account)) {
-		result = userBean.removeUser(account);
+			NormalUser user = userBean.searchUserByAccount(account);
+			//remove customer's reference to user before deleting user
+			for (Customer c : user.getCustomers()) {
+				c.setNormalUser(null);
+				customerBean.editCustomer(c);
+				
+			}
+			
+			user.setCustomers(null);
+			result0 = userBean.editUser(user);
+			result = userBean.removeUser(account);
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Failed and please refresh the page before deleting"));
 			Logger.getLogger(AddCustomerController.class.getName()).log(Level.SEVERE, "Failed and please refresh the page before deleting");
 		}
 		
-		if (result == true)	{
+		if (result && result0)	{
 			updateUserList();
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("User " + account +" has been deleted succesfully"));
 		} else {

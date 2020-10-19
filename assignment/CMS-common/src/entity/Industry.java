@@ -67,7 +67,7 @@ public class Industry implements Serializable{
 	}
 
 
-	@OneToMany(cascade = {CascadeType.MERGE}, fetch=FetchType.LAZY, mappedBy="customerIndustryType") //cascade impact the operation from parent to child , mappedBy="customerIndustryType"	
+	@OneToMany(cascade = {CascadeType.MERGE}, fetch=FetchType.EAGER, mappedBy="customerIndustryType") //eager can be optimized when deleting an industry. cascade impact the operation from parent to child , mappedBy="customerIndustryType"	
 	public Set<Customer> getCustomers() {
 		return customers;
 	}

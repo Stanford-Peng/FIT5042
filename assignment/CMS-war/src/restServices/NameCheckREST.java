@@ -22,6 +22,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 import beans.UserBean;
+import repository.ContactRepository;
 import repository.UserRepository;
 
 @Path("checkname")
@@ -36,7 +37,8 @@ public class NameCheckREST {
     
     @EJB
     private UserRepository userRepository;
-    
+    @EJB
+    private ContactRepository contactRepository;
 
     /**
      * Default constructor. 
@@ -97,6 +99,24 @@ public class NameCheckREST {
         return objectBuilder.build();
     }
     
+    @POST
+    @Path("contact")
+    @Consumes("application/x-www-form-urlencoded")
+    @Produces(MediaType.APPLICATION_JSON)
+    public JsonObject checkContactEmail(@FormParam("email") String email) throws Exception{
+    	
+        JsonObjectBuilder objectBuilder = Json.createObjectBuilder();
+        objectBuilder.add("email", email);
+        
+    	if(contactRepository.getContactByEmail(email) == null) {   		
+            objectBuilder.add("exist", false);               		   		
+    	}else {
+    		objectBuilder.add("exist", true);    		
+    	}   	
+
+        return objectBuilder.build();
+    	
+    }
     
 
 }

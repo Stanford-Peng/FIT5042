@@ -60,7 +60,7 @@
 			<p:column headerText="Operations">
 				<p:commandLink value="Delete  " ajax="true"
 					action="#{allIndustryController.deleteIndustry(industry.industryID)}"
-					disabled="#{industry.industryID == null}" update="myIndustryList">
+					disabled="#{industry.industryID == null}" update="myIndustryList MyForm:msgs">
 					<p:confirm header="Confirmation" message="Are you sure?"
 						icon="pi pi-exclamation-triangle" />
 						<f:param name="industryID" value="#{industry.industryID}" />

@@ -13,7 +13,7 @@
 	<div class="navbar-brand">CMS - add a contact for customer
 		#{customerContactsController.customerID}</div>
 
-	<h:form>
+	<h:form id="myform">
 		<table class="table table-bordered ">
 			<tr>
 				<td width="200"><h:outputLabel value="Email" for="Email" /></td>
@@ -22,7 +22,7 @@
 							requiredMessage="Please enter an Email address" >
 								 <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
 					</h:inputText>
-										<h:message for="Email"
+										<h:message for="Email" id="message"
 						class="#{!Email.valid ? 'badge badge-warning' : 'none'}" />
 					</td>
 
@@ -119,6 +119,34 @@
 		
 	</h:form>
 
+<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+/* 	https://stackoverflow.com/questions/24710503/how-do-i-post-urlencoded-form-data-with-http-without-jquery 
+ *  https://stackoverflow.com/questions/16303779/the-entity-name-must-immediately-follow-the-in-the-entity-reference
+	https://www.beyondjava.net/angularfaces-jsf-beyond-ajax
+ **/
+
+	
+    
+   $("#myform\\:Email").keyup(function(){
+	        var body = $("#myform\\:Email").val();
+	        $.post("/CMS-war/webresources/checkname/contact", {"email" : body} ,function(data){
+	        var message = $("#myform\\:message");
+	        
+	        if(data["exist"]){
+	            message.text("Email "+ data["email"] +" already registered");
+	            message.addClass("badge badge-warning")
+	        }
+	        else{
+	            message.text("Email " + data["email"] + " available");
+	            message.addClass("badge badge-info")
+	        }
+	        })
+	  }
+	) 
+
+</script>
 
 </body>
 </html>

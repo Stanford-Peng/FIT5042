@@ -35,7 +35,7 @@ public class NormalUser extends User implements Serializable{
 	}
 	
 
-	@OneToMany(fetch=FetchType.EAGER, mappedBy="normalUser", cascade = {CascadeType.PERSIST, CascadeType.MERGE}) //delete user will delete all customer
+	@OneToMany(fetch=FetchType.EAGER, mappedBy="normalUser", cascade = {CascadeType.PERSIST, CascadeType.MERGE}) //eager can be optimized when deleting a normal user
 	public LinkedHashSet<Customer> getCustomers() {
 		return customers;
 	}

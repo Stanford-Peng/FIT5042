@@ -15,6 +15,8 @@
 		<h3>Select One User</h3>
 		<span>Current User : </span> <span>#{empty editCustomerController.account ? "No user currently" : editCustomerController.account}</span>
 		<p:selectOneRadio id="assignedUser"  value='#{editCustomerController.account}' layout="responsive" columns="5">	
+			<f:selectItem  var="u"
+				itemLabel="Not Assign" itemValue="#{null}" />
 			<f:selectItems value="#{userBean.allUsers}" var="u"
 				itemLabel="#{u.account}" itemValue="#{u.account}" />
 								

@@ -14,6 +14,7 @@ import java.io.Serializable;
 @Named
 @SessionScoped
 public class WebServiceClient implements Serializable {
+	//not used, can be deleted because the ajax is sent directly from jsf
 	
 	private WebTarget webTarget;
     private Client client;

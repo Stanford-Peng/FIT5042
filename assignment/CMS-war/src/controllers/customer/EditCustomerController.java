@@ -68,7 +68,9 @@ public class EditCustomerController {
 		NormalUser user = userBean.searchUserByAccount(account);
 		
 		//set new user 's reference to this customer
-		user.getCustomers().add(customer);
+		if (user != null) {
+			user.getCustomers().add(customer);
+		}
 		//set customer 's reference to new user
 		customer.setNormalUser(user);		
 		boolean result = customerBean.editCustomer(customer);

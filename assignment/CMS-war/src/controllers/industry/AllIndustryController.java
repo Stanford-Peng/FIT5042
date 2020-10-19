@@ -19,6 +19,7 @@ import org.primefaces.event.RowEditEvent;
 import beans.CustomerBean;
 import beans.IndustryTypeBean;
 import controllers.customer.AddCustomerController;
+import entity.Customer;
 import entity.Industry;
 
 @Named(value="allIndustryController")
@@ -26,7 +27,10 @@ import entity.Industry;
 public class AllIndustryController {
 	
 	@Inject
-	IndustryTypeBean industryTypeBean;
+	private IndustryTypeBean industryTypeBean;
+	
+	@Inject
+	private CustomerBean customerBean;
 	
 	private List<Industry> industries;
 	
@@ -62,14 +66,23 @@ public class AllIndustryController {
 	                .getRequestParameterMap()
 	                .get("industryID"));
 			boolean result = false;
+			boolean result0 = false;
 			if (param == industryID) {
-				 result = industryTypeBean.removeIndustry(industryID);
+				Industry industry = industryTypeBean.findIndustryByID(industryID);
+				for(Customer c: industry.getCustomers()) {
+					c.setCustomerIndustryType(null);
+					customerBean.editCustomer(c);
+					
+				}
+				industry.setCustomers(null);
+				result0 = industryTypeBean.editIndustry(industry);				
+				result = industryTypeBean.removeIndustry(industryID);
 				} else {
 					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Failed and please refresh the page before deleting"));
 					Logger.getLogger(AddCustomerController.class.getName()).log(Level.SEVERE, "Failed and please refresh the page before deleting");
 				}
 //			
-			if (result) {
+			if (result && result0) {
 				init();//update list
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Industry " + industryID +" has been deleted succesfully"));
 			}
