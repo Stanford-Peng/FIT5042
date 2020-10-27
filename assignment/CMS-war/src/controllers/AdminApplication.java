@@ -122,17 +122,17 @@ public class AdminApplication implements Serializable {
 		return "addUser.xhtml";
 	}
 	
-	public String deleteUser(String account) {
+	public String deleteUser() {
 		
 		
 		
-		String param  = String.valueOf(FacesContext.getCurrentInstance()
+		String account  = String.valueOf(FacesContext.getCurrentInstance()
                 .getExternalContext()
                 .getRequestParameterMap()
                 .get("userAccount"));
 		boolean result = false;
 		boolean result0 = false;
-		if (param.equals(account)) {
+//		if (param.equals(account)) {
 			NormalUser user = userBean.searchUserByAccount(account);
 			//remove customer's reference to user before deleting user
 			for (Customer c : user.getCustomers()) {
@@ -144,10 +144,10 @@ public class AdminApplication implements Serializable {
 			user.setCustomers(null);
 			result0 = userBean.editUser(user);
 			result = userBean.removeUser(account);
-		} else {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Failed and please refresh the page before deleting"));
-			Logger.getLogger(AddCustomerController.class.getName()).log(Level.SEVERE, "Failed and please refresh the page before deleting");
-		}
+//		} else {
+//			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Failed and please refresh the page before deleting"));
+//			Logger.getLogger(AddCustomerController.class.getName()).log(Level.SEVERE, "Failed and please refresh the page before deleting");
+//		}
 		
 		if (result && result0)	{
 			updateUserList();

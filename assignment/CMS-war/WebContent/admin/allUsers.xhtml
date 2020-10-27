@@ -43,7 +43,7 @@
 
 				<p:column headerText="Operations">
 					<p:commandLink value="Delete |" ajax="true"
-						action="#{adminApplication.deleteUser(normalUser.account)}"
+						action="#{adminApplication.deleteUser()}"
 						disabled="#{normalUser.account == null}" update="myList MyForm:growl">
 						<f:param name="userAccount" value="#{normalUser.account}" />
 						<p:confirm header="Confirmation" message="Are you sure?"
@@ -85,16 +85,16 @@
 
 			<div>
 				<h:commandButton id="add" value="Add" action="addUser.xhtml"
-					class="btn btn-primary" />
+					class="btn btn-primary mr-1"/>
 
 				<h:commandButton id="viewAll" value="View All"
 					action="#{adminApplication.updateUserList()}"
 					class="btn btn-primary">
 				</h:commandButton>
 			</div>
-
-			<div>
-				<h:inputText value="#{adminApplication.searchedAccount}"
+			<!--reference: https://getbootstrap.com/docs/4.0/utilities/flex/ -->
+			<div class="d-flex justify-content-center mt-3">
+				<h:inputText value="#{adminApplication.searchedAccount}" class="mr-1"
 					id="searchByAccount"
 					onchange="if (document.getElementById('MyForm:searchByAccount').value.trim() == '') {document.getElementById('MyForm:searchByAccount').value = '';} " />
 				<h:commandButton id="search" value="Search by Account"

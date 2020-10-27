@@ -117,7 +117,6 @@ public class Customer implements Serializable {
 	}
 	
 	@Temporal(TemporalType.DATE)
-	@Past
 	Date getCustomerAddedDate() {
 		return customerAddedDate;
 	}

@@ -105,7 +105,7 @@
 			<p:column headerText="Operations">
 				<ul>
 					<li><p:commandLink value="Delete" ajax="true"
-							action="${deleteCustomerController.deleteCustomer(customer.customerID)}"
+							action="${deleteCustomerController.deleteCustomer()}"
 							disabled="#{customer.customerID == null}"
 							update="myCustomerList :MyForm:growl">
 							<f:param name="customerID" value="#{customer.customerID}" />
@@ -152,7 +152,7 @@
 		<h:outputText value=" " />
 
 		<div>
-			<p:commandButton id="add" value="Add" action="addCustomer.xhtml" ajax="false" class="btn btn-primary"/>
+			<p:commandButton id="add" value="Add" action="addCustomer.xhtml" ajax="false" class="btn btn-primary mr-1"/>
 
 			<p:commandButton id="viewAll" ajax="true" value="View All"
 				update="myCustomerList"
@@ -161,8 +161,8 @@
 
 
 
-		<div>
-			<h:inputText value="#{viewCustomersController.searchedString}"
+		<div class="d-flex justify-content-center mt-3">
+			<h:inputText value="#{viewCustomersController.searchedString}" class="mr-1"
 				id="searchByNameId"
 				onchange="if (document.getElementById('MyForm:searchByNameId').value.trim() == '') {document.getElementById('MyForm:searchByNameId').value = '';} " />
 			<p:commandButton id="search" ajax="true" value="Search by Name/ID"
@@ -171,8 +171,8 @@
 				action="#{viewCustomersController.searchCustomerByNameId()}" class="btn btn-primary"/>
 		</div>
 
-		<div>
-			<p:selectOneMenu id="customerIndustryType"
+		<div class="d-flex justify-content-center mt-3">
+			<p:selectOneMenu id="customerIndustryType" class="mr-1"
 				converter="industryConverter"
 				value="#{viewCustomersController.searchIndustryType}"
 				filter="true" filterMatchMode="startsWith">
@@ -187,7 +187,7 @@
 				</f:facet>
 			</p:selectOneMenu>
 
-			<h:selectOneMenu id="customerScale"
+			<h:selectOneMenu id="customerScale" class="mr-1"
 				value="#{viewCustomersController.searchScale}"
 				>
 				<f:selectItem itemLabel="Select One" itemValue= ""/>

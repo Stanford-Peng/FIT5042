@@ -28,7 +28,7 @@ public class DeleteCustomerController {
 		
 	}
 	
-	public void deleteCustomer(int customerID) {
+	public void deleteCustomer() {
 		
 		
 		try {
@@ -37,13 +37,13 @@ public class DeleteCustomerController {
 	                .getRequestParameterMap()
 	                .get("customerID"));
 			boolean result = false;
-			if (param == customerID) {
-			 result = customerBean.removeCustomer(customerID);
-			} else {
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Failed and please refresh the page before deleting"));
-				//FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Failed and please refresh the page before deleting"));
-				Logger.getLogger(AddCustomerController.class.getName()).log(Level.SEVERE, "Failed and please refresh the page before deleting");
-			}
+//			if (param == customerID) {
+			result = customerBean.removeCustomer(param);
+//			} else {
+//				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Failed and please refresh the page before deleting"));
+//				//FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Failed and please refresh the page before deleting"));
+//				Logger.getLogger(AddCustomerController.class.getName()).log(Level.SEVERE, "Failed and please refresh the page before deleting");
+//			}
 			if (result) {
 				viewCustomersController.init();
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("The Customer has been deleted succesfully"));
