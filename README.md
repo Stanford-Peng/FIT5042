@@ -30,6 +30,6 @@ As a normal user, I want to add, view, change and delete the contacts of custome
 
 ![erd](https://github.com/Stanford-Peng/FIT5042/blob/master/Pics/erd.png)
 
-### class diagram:
+### Class diagram:
 
 ![cd](https://github.com/Stanford-Peng/FIT5042/blob/master/Pics/class-diagram.png)
